@@ -3,6 +3,7 @@ import requests
 import json
 import pandas as pd
 import re
+import os
 
 
 def get_json(json_files, apis, email_address) -> None:
@@ -23,7 +24,7 @@ def get_json(json_files, apis, email_address) -> None:
     session = requests.session()
     url = "https://users.premierleague.com/accounts/login/"
     payload = {
-        "password": password,
+        "password": pwd,
         "login": email_address,
         "app": "plfpl-web",
     }
@@ -39,7 +40,7 @@ def get_json(json_files, apis, email_address) -> None:
             json.dump(jsonResponse, outfile)
 
 
-def get_static_data(email_address):
+def get_static_data(email_address) -> list:
     apis = [
         "https://draft.premierleague.com/api/bootstrap-dynamic",
         "https://draft.premierleague.com/api/game",
@@ -55,8 +56,10 @@ def get_static_data(email_address):
 
     get_json(json_files=json_files, apis=apis, email_address=email_address)
 
+    return json_files
 
-def get_league_data(email_address, league_code):
+
+def get_league_data(email_address, league_code) -> list:
     apis = [
         f"https://draft.premierleague.com/api/league/{league_code}/details",
         f"https://draft.premierleague.com/api/league/{league_code}/element-status",
@@ -72,6 +75,8 @@ def get_league_data(email_address, league_code):
 
     get_json(json_files=json_files, apis=apis, email_address=email_address)
 
+    return json_files
+
 
 def get_team_data(email_address, team_id):
     apis = [
@@ -79,10 +84,11 @@ def get_team_data(email_address, team_id):
         f"https://draft.premierleague.com/api/entry/{team_id}/my-team",
         f"https://draft.premierleague.com/api/watchlist/{team_id}",
     ]
+    os.makedirs(f"data/{team_id}")
     json_files = [
-        f"data/{team_id}_public.json",
-        f"data/{team_id}_element-status.json",
-        f"data/{team_id}_trades.json",
+        f"data/{team_id}/public.json",
+        f"data/{team_id}/element-status.json",
+        f"data/{team_id}/trades.json",
     ]
 
     get_json(json_files=json_files, apis=apis, email_address=email_address)

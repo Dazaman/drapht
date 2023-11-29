@@ -5,22 +5,19 @@ from api_requests import (
     get_GW_data,
     get_team_data,
 )
-
+from transform import transform_details
 import duckdb
 
 
 def get_data(con, email_address, league_code):
-    get_static_data(email_address=email_address)
-    get_league_data(email_address=email_address, league_code=league_code)
+    # static_files = get_static_data(email_address=email_address)
+    # league_files = get_league_data(email_address=email_address, league_code=league_code)
 
-    con.sql(
-        "CREATE TABLE IF NOT EXISTS standings AS SELECT * FROM read_json_auto('data/details.json');"
-    )
-    # Get latest GW / team_list from above,
+    entries = transform_details(con)
+    print("entries", entries)
 
-    results = con.sql("SELECT * FROM standings").df()
-    print(results)
-    results.to_csv("standings.csv")
+    for team in entries:
+        get_team_data(email_address=email_address, team_id=team)
 
 
 def main():
