@@ -18,6 +18,7 @@ def get_data(con, email_address, league_code):
 
     for team in entries:
         get_team_data(email_address=email_address, team_id=team)
+        break
 
 
 def main():

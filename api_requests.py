@@ -84,7 +84,10 @@ def get_team_data(email_address, team_id):
         f"https://draft.premierleague.com/api/entry/{team_id}/my-team",
         f"https://draft.premierleague.com/api/watchlist/{team_id}",
     ]
-    os.makedirs(f"data/{team_id}")
+    if os.path.exists(f"data/{team_id}"):
+        print("The file exists.")
+    else:
+        os.makedirs(f"data/{team_id}")
     json_files = [
         f"data/{team_id}/public.json",
         f"data/{team_id}/element-status.json",
