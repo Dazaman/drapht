@@ -30,7 +30,7 @@ def get_json(json_files, apis, email_address) -> None:
         "app": "plfpl-web",
     }
     success = session.post(url, data=payload)
-    print("Success", success.status_code)
+    print("Status", success.status_code)
 
     # Loop over the api(s), call them and capture the response(s)
     for file, i in zip(json_files, apis):
