@@ -10,15 +10,23 @@ import duckdb
 
 
 def get_data(con, email_address, league_code):
-    # static_files = get_static_data(email_address=email_address)
+    static_files = get_static_data(email_address=email_address)
     # league_files = get_league_data(email_address=email_address, league_code=league_code)
 
-    entries = transform_details(con)
+    entries, gw = transform_details(con)
     print("entries", entries)
+    print("max gw ", max(gw))
 
     for team in entries:
         get_team_data(email_address=email_address, team_id=team)
         break
+
+    for week in gw:
+        get_GW_data(email_address=email_address, gw=week)
+        break
+
+
+# @click.command()
 
 
 def main():

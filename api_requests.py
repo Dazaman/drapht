@@ -20,7 +20,8 @@ def get_json(json_files, apis, email_address) -> None:
     """
 
     # Post credentials for authentication
-    pwd = getpass.getpass("Enter Password: ")
+    # pwd = getpass.getpass("Enter Password: ")
+    pwd = "Yusuf1993!"
     session = requests.session()
     url = "https://users.premierleague.com/accounts/login/"
     payload = {
@@ -28,7 +29,8 @@ def get_json(json_files, apis, email_address) -> None:
         "login": email_address,
         "app": "plfpl-web",
     }
-    session.post(url, data=payload)
+    success = session.post(url, data=payload)
+    print("Success", success.status_code)
 
     # Loop over the api(s), call them and capture the response(s)
     for file, i in zip(json_files, apis):
@@ -36,6 +38,7 @@ def get_json(json_files, apis, email_address) -> None:
         r = session.get(i)
 
         jsonResponse = r.json()
+        print("response : ", jsonResponse)
         with open(file, "w") as outfile:
             json.dump(jsonResponse, outfile)
 

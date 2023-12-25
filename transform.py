@@ -1,8 +1,9 @@
 import json
 import pandas as pd
+from typing import NamedTuple
 
 
-def transform_details(con) -> list:
+def transform_details(con) -> NamedTuple("League", [("entries", list), ("gw", list)]):
     with open("data/details.json") as json_data:
         d = json.load(json_data)
         league_entry_df = pd.json_normalize(d["league_entries"])
@@ -17,4 +18,7 @@ def transform_details(con) -> list:
     print(results)
     results.to_csv("standings.csv")
 
-    return results["entry_id"].to_list()
+    gw = con.sql("SELECT DISTINCT gw FROM league").df()
+    print(gw)
+
+    return results["entry_id"].to_list(), gw["gw"].to_list()
