@@ -23,14 +23,22 @@ def get_json(json_files, apis, email_address) -> None:
     # pwd = getpass.getpass("Enter Password: ")
     pwd = "Yusuf1993!"
     session = requests.session()
-    url = "https://users.premierleague.com/accounts/login/"
-    payload = {
-        "password": pwd,
-        "login": email_address,
-        "app": "plfpl-web",
-    }
-    success = session.post(url, data=payload)
-    print("Status", success.status_code)
+
+    ### Login api doesnt work anymore due to captchas
+    # session.proxies = {
+    #     "http": "http://10.10.10.10:8000",
+    #     "https": "http://10.10.10.10:8000",
+    # }
+
+    # url = "https://users.premierleague.com/accounts/login/"
+    # # payload = {
+    # #     "password": pwd,
+    # #     "login": email_address,
+    # #     "app": "plfpl-web",
+    # # }
+    # status = session.get(url)
+
+    # print("Status", status.status_code)
 
     # Loop over the api(s), call them and capture the response(s)
     for file, i in zip(json_files, apis):
@@ -38,7 +46,6 @@ def get_json(json_files, apis, email_address) -> None:
         r = session.get(i)
 
         jsonResponse = r.json()
-        print("response : ", jsonResponse)
         with open(file, "w") as outfile:
             json.dump(jsonResponse, outfile)
 

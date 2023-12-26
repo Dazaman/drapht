@@ -6,12 +6,15 @@ from api_requests import (
     get_team_data,
 )
 from transform import transform_details
-import duckdb
+import duckdb, os
 
 
-def get_data(con, email_address, league_code):
-    static_files = get_static_data(email_address=email_address)
-    # league_files = get_league_data(email_address=email_address, league_code=league_code)
+def get_data(con, email_address, league_code, refresh):
+    if refresh:
+        static_files = get_static_data(email_address=email_address)
+        league_files = get_league_data(
+            email_address=email_address, league_code=league_code
+        )
 
     entries, gw = transform_details(con)
     print("entries", entries)
@@ -35,7 +38,16 @@ def main():
 
     email_address = "dazam92@gmail.com"
     league_code = "56578"
-    get_data(con=con, email_address=email_address, league_code=league_code)
+    refresh = False
+
+    if os.path.exists(f"data"):
+        print("The data folder exists.")
+    else:
+        os.makedirs(f"data")
+
+    get_data(
+        con=con, email_address=email_address, league_code=league_code, refresh=refresh
+    )
     print("Let's start")
 
 

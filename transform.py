@@ -16,9 +16,8 @@ def transform_details(con) -> NamedTuple("League", [("entries", list), ("gw", li
 
     results = con.sql("SELECT DISTINCT entry_id FROM league_entry").df()
     print(results)
-    results.to_csv("standings.csv")
 
-    gw = con.sql("SELECT DISTINCT gw FROM league").df()
+    gw = con.sql("SELECT * FROM league_entry").df()
     print(gw)
 
     return results["entry_id"].to_list(), gw["gw"].to_list()
