@@ -28,7 +28,6 @@ def transform_details(con) -> NamedTuple("League", [("entries", list), ("gw", li
 
 def team_points(con):
     for entry in os.listdir("./data"):
-        print(entry)
         if entry.startswith("team_"):
             with open(os.path.join(f"data/{entry}", "history.json")) as json_data:
                 data = json.load(json_data)
@@ -91,3 +90,47 @@ def concat_team_points(con):
     ).df()
 
     joined.to_csv("data/joined.csv", index=False)
+    con.sql(
+        f"CREATE TABLE IF NOT EXISTS total_points AS FROM read_csv('data/joined.csv', auto_detect = TRUE);"
+    )
+
+
+def calculate_points_bracket(con, bracket):
+    brackets = {
+        "1": ("1", "10"),
+        "2": ("11", "20"),
+        "3": ("21", "29"),
+        "4": ("30", "38"),
+    }
+
+    sql = f"""
+    WITH 
+    gw AS (
+        SELECT 
+            *,
+        FROM total_points
+        WHERE gw >= {brackets[bracket][0]} AND gw <= {brackets[bracket][1]} 
+    ),
+    pts_table AS (
+        SELECT 
+            team_id,
+            SUM(points) as points
+        FROM gw
+        GROUP BY 1
+    )
+
+    SELECT 
+        a.team_id,
+        a.points,
+        b.entry_name,
+        b.player_first_name,
+        b.player_last_name,
+    FROM pts_table a
+    LEFT JOIN league_entry b
+    ON a.team_id = b.entry_id
+    ORDER BY 2 desc        
+
+    """
+
+    results = con.sql(sql).df()
+    results.to_csv(f"data/results_{bracket}.csv", index=False)

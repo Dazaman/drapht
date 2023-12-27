@@ -6,7 +6,12 @@ from extract import (
     get_team_data,
     get_GW_team_data,
 )
-from transform import transform_details, team_points, concat_team_points
+from transform import (
+    transform_details,
+    team_points,
+    concat_team_points,
+    calculate_points_bracket,
+)
 import duckdb, os
 
 
@@ -43,9 +48,11 @@ def main():
 
     if refresh:
         get_data(con=con, email_address=email_address, league_code=league_code)
+        team_points(con=con)
+        concat_team_points(con=con)
 
-    team_points(con=con)
-    concat_team_points(con=con)
+    for bracket in range(1, 5):
+        calculate_points_bracket(con=con, bracket=str(bracket))
 
 
 if __name__ == "__main__":
