@@ -120,15 +120,14 @@ def calculate_points_bracket(con, bracket) -> pd.DataFrame:
     )
 
     SELECT 
-        a.team_id,
-        a.points,
-        b.entry_name,
-        b.player_first_name,
-        b.player_last_name,
+        CONCAT("GW",{brackets[bracket][0]}, {brackets[bracket][1]}) as gw_bracket
+        b.entry_name AS team_name,
+        CONCAT(b.player_first_name, b.player_last_name) AS full_name,
+        a.points AS points,
     FROM pts_table a
     LEFT JOIN league_entry b
     ON a.team_id = b.entry_id
-    ORDER BY 2 desc        
+    ORDER BY 2 desc      
 
     """
 
