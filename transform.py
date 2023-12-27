@@ -95,7 +95,7 @@ def concat_team_points(con):
     )
 
 
-def calculate_points_bracket(con, bracket):
+def calculate_points_bracket(con, bracket) -> pd.DataFrame:
     brackets = {
         "1": ("1", "10"),
         "2": ("11", "20"),
@@ -134,3 +134,5 @@ def calculate_points_bracket(con, bracket):
 
     results = con.sql(sql).df()
     results.to_csv(f"data/results_{bracket}.csv", index=False)
+
+    return results

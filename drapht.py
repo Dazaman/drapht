@@ -13,6 +13,7 @@ from transform import (
     calculate_points_bracket,
 )
 import duckdb, os
+import streamlit as st
 
 
 def get_data(con, email_address, league_code):
@@ -51,8 +52,19 @@ def main():
         team_points(con=con)
         concat_team_points(con=con)
 
-    for bracket in range(1, 5):
-        calculate_points_bracket(con=con, bracket=str(bracket))
+    # for bracket in range(1, 5):
+    #     _ = calculate_points_bracket(con=con, bracket=str(bracket))
+
+    st.set_page_config(layout="wide")
+    st.title("FPL Draft Standings")
+
+    df1 = calculate_points_bracket(con=con, bracket="1")
+    st.write("Bracket 1")
+    st.table(data=df1)
+
+    df2 = calculate_points_bracket(con=con, bracket="2")
+    st.write("Bracket 2")
+    st.table(data=df2)
 
 
 if __name__ == "__main__":
