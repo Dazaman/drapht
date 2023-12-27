@@ -12,7 +12,8 @@ from transform import (
     concat_team_points,
     calculate_points_bracket,
 )
-import duckdb, os
+import duckdb
+import os
 import streamlit as st
 
 
