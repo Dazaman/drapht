@@ -91,30 +91,41 @@ def get_league_data(email_address, league_code) -> list:
 def get_team_data(email_address, team_id):
     apis = [
         f"https://draft.premierleague.com/api/entry/{team_id}/public",
+        f"https://draft.premierleague.com/api/entry/{team_id}/history",
         f"https://draft.premierleague.com/api/entry/{team_id}/my-team",
         f"https://draft.premierleague.com/api/watchlist/{team_id}",
     ]
-    if os.path.exists(f"data/{team_id}"):
+    if os.path.exists(f"data/team_{team_id}"):
         print("The file exists.")
     else:
-        os.makedirs(f"data/{team_id}")
+        os.makedirs(f"data/team_{team_id}")
     json_files = [
-        f"data/{team_id}/public.json",
-        f"data/{team_id}/element-status.json",
-        f"data/{team_id}/trades.json",
+        f"data/team_{team_id}/public.json",
+        f"data/team_{team_id}/history.json",
+        f"data/team_{team_id}/element-status.json",
+        f"data/team_{team_id}/trades.json",
     ]
 
     get_json(json_files=json_files, apis=apis, email_address=email_address)
 
 
-def get_GW_data(email_address, GW):
+def get_GW_data(email_address, gw):
     apis = [
-        f"https://draft.premierleague.com/api/event/{GW}/live",
-        # f"https://draft.premierleague.com/api/entry/{team_id}/event/{GW}",
+        f"https://draft.premierleague.com/api/event/{gw}/live",
     ]
     json_files = [
-        f"data/{GW}_live.json",
-        # f"data/{GW}_event.json",
+        f"data/GW/{gw}_live.json",
+    ]
+
+    get_json(json_files=json_files, apis=apis, email_address=email_address)
+
+
+def get_GW_team_data(email_address, team_id, gw):
+    apis = [
+        f"https://draft.premierleague.com/api/entry/{team_id}/event/{gw}",
+    ]
+    json_files = [
+        f"data/team_{team_id}/{gw}_event.json",
     ]
 
     get_json(json_files=json_files, apis=apis, email_address=email_address)
