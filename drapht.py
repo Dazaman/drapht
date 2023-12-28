@@ -50,8 +50,8 @@ def main():
     email_address = "dazam92@gmail.com"
     league_code = "56578"
 
-    refresh = True
-    transform = True
+    refresh = False
+    transform = False
 
     if os.path.exists(f"data"):
         print("The data folder exists.")
