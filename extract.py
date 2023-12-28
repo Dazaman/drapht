@@ -109,18 +109,18 @@ def get_team_data(email_address, team_id):
     get_json(json_files=json_files, apis=apis, email_address=email_address)
 
 
-def get_GW_data(email_address, gw):
+def get_gw_data(email_address, gw):
     apis = [
         f"https://draft.premierleague.com/api/event/{gw}/live",
     ]
     json_files = [
-        f"data/GW/{gw}_live.json",
+        f"data/gw/{gw}_live.json",
     ]
 
     get_json(json_files=json_files, apis=apis, email_address=email_address)
 
 
-def get_GW_team_data(email_address, team_id, gw):
+def get_gw_team_data(email_address, team_id, gw):
     apis = [
         f"https://draft.premierleague.com/api/entry/{team_id}/event/{gw}",
     ]

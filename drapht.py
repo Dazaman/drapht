@@ -2,15 +2,16 @@ from extract import (
     get_json,
     get_league_data,
     get_static_data,
-    get_GW_data,
+    get_gw_data,
     get_team_data,
-    get_GW_team_data,
+    get_gw_team_data,
 )
 from transform import (
     transform_details,
     team_points,
     concat_team_points,
     calculate_points_bracket,
+    gw_live,
 )
 import duckdb
 import os
@@ -28,11 +29,19 @@ def get_data(con, email_address, league_code):
 
     for team in entries:
         get_team_data(email_address=email_address, team_id=team)
-        # for week in gw:
-        #     get_GW_team_data(email_address=email_address, team_id=team, gw=week)
+        for week in gw:
+            get_gw_team_data(email_address=email_address, team_id=team, gw=week)
 
     for week in gw:
-        get_GW_data(email_address=email_address, gw=week)
+        get_gw_data(email_address=email_address, gw=week)
+
+
+def transform_load_data(
+    con,
+):
+    team_points(con=con)
+    concat_team_points(con=con)
+    gw_live(con=con)
 
 
 def main():
@@ -40,7 +49,9 @@ def main():
 
     email_address = "dazam92@gmail.com"
     league_code = "56578"
-    refresh = False
+
+    refresh = True
+    transform = True
 
     if os.path.exists(f"data"):
         print("The data folder exists.")
@@ -50,11 +61,8 @@ def main():
 
     if refresh:
         get_data(con=con, email_address=email_address, league_code=league_code)
-        team_points(con=con)
-        concat_team_points(con=con)
-
-    # for bracket in range(1, 5):
-    #     _ = calculate_points_bracket(con=con, bracket=str(bracket))
+    if transform:
+        transform_load_data(con=con)
 
     st.set_page_config(layout="wide")
     st.title("FPL Draft Standings")

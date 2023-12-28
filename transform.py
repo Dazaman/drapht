@@ -5,6 +5,16 @@ from typing import NamedTuple
 
 
 def transform_details(con) -> NamedTuple("League", [("entries", list), ("gw", list)]):
+    """Reads in details and event status json files and creates tables in the database
+    The output is used to loop over teams and GWs to ingest further data.
+
+    Args:
+        con (_type_): duck db connection
+
+    Returns:
+        entries: the list of team ids
+        gw: the number of game weeks currently available
+    """
     with open("data/details.json") as json_data:
         d = json.load(json_data)
         league_entry_df = pd.json_normalize(d["league_entries"])
@@ -37,9 +47,6 @@ def team_points(con):
                 con.sql(
                     f"CREATE TABLE IF NOT EXISTS {entry} AS FROM read_csv('data/{entry}/history.csv', auto_detect = TRUE)"
                 )
-
-    # check = con.sql(f"SELECT * FROM team_249496")
-    # print(check)
 
 
 def concat_team_points(con):
@@ -130,8 +137,34 @@ def calculate_points_bracket(con, bracket) -> pd.DataFrame:
     ORDER BY 4 desc      
 
     """
-    print(sql)
     results = con.sql(sql).df()
     results.to_csv(f"data/results_{bracket}.csv", index=False)
 
     return results
+
+
+def gw_live(con):
+    df_list = []
+
+    for file in os.listdir("data/gw/."):
+        if file.endswith(".json"):
+            print(file)
+            with open(f"data/gw/{file}") as json_data:
+                d = json.load(json_data)
+                rows = []
+                for value in d["elements"]:
+                    row_dict = d["elements"][str(value)]["stats"]
+                    row_dict["id"] = value
+                    row_dict["gw"] = file.split(".")[0].split("_")[0]
+                    rows.append(row_dict)
+                df = pd.DataFrame(rows)
+                df = df.set_index("id")
+
+                df_list.append(df)
+
+    gw_live = pd.concat(df_list)
+    print(gw_live.shape)
+    gw_live.to_csv("data/gw_live.csv", index=False)
+    con.sql(
+        f"CREATE TABLE IF NOT EXISTS gw_live AS FROM read_csv('data/gw_live.csv', auto_detect = TRUE);"
+    )
