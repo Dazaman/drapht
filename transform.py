@@ -36,7 +36,7 @@ def transform_details(con) -> NamedTuple("League", [("entries", list), ("gw", li
     return results["entry_id"].to_list(), gw["event"].to_list()
 
 
-def team_points(con):
+def load_team_points(con):
     for entry in os.listdir("./data"):
         if entry.startswith("team_"):
             with open(os.path.join(f"data/{entry}", "history.json")) as json_data:
@@ -140,10 +140,10 @@ def calculate_points_bracket(con, bracket) -> pd.DataFrame:
     results = con.sql(sql).df()
     results.to_csv(f"data/results_{bracket}.csv", index=False)
 
-    return results
+    # return results
 
 
-def gw_live(con):
+def load_gw_live(con):
     df_list = []
 
     for file in os.listdir("data/gw/."):
@@ -158,13 +158,25 @@ def gw_live(con):
                     row_dict["gw"] = file.split(".")[0].split("_")[0]
                     rows.append(row_dict)
                 df = pd.DataFrame(rows)
-                df = df.set_index("id")
+                # df = df.set_index("id")
 
                 df_list.append(df)
 
     gw_live = pd.concat(df_list)
     print(gw_live.shape)
-    gw_live.to_csv("data/gw_live.csv", index=False)
+    print(gw_live.head())
+    gw_live.to_csv("data/gw_live.csv")
     con.sql(
         f"CREATE TABLE IF NOT EXISTS gw_live AS FROM read_csv('data/gw_live.csv', auto_detect = TRUE);"
     )
+
+    results = con.sql("SELECT id, gw entry_id FROM gw_live").df()
+    print(results)
+
+
+def load_transactions(con):
+    with open("data/transactions.json") as json_data:
+        d = json.load(json_data)
+        transactions_df = pd.json_normalize(d["transactions"])
+
+    con.sql("CREATE TABLE IF NOT EXISTS transactions AS SELECT * FROM transactions_df;")
