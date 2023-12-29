@@ -60,9 +60,9 @@ def main():
     email_address = "dazam92@gmail.com"
     league_code = "56578"
 
-    refresh = True
-    transform = True
-    load = True
+    refresh = False
+    transform = False
+    load = False
 
     if not os.path.exists(f"data"):
         os.makedirs(f"data")
