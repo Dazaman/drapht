@@ -2,6 +2,7 @@ import os
 import json
 import pandas as pd
 from typing import NamedTuple
+import matplotlib
 
 
 def transform_details(con) -> NamedTuple("League", [("entries", list), ("gw", list)]):
@@ -20,15 +21,23 @@ def transform_details(con) -> NamedTuple("League", [("entries", list), ("gw", li
         league_entry_df = pd.json_normalize(d["league_entries"])
         league_df = pd.json_normalize(d["league"])
         standings_df = pd.json_normalize(d["standings"])
+        con.sql(
+            "CREATE TABLE IF NOT EXISTS league_entry AS SELECT * FROM league_entry_df;"
+        )
+        con.sql("CREATE TABLE IF NOT EXISTS league AS SELECT * FROM league_df;")
+        con.sql("CREATE TABLE IF NOT EXISTS standings AS SELECT * FROM standings_df;")
 
     with open("data/event_status.json") as json_data:
         d = json.load(json_data)
         event_status_df = pd.json_normalize(d["status"])
+        con.sql(
+            "CREATE TABLE IF NOT EXISTS event_status AS SELECT * FROM event_status_df;"
+        )
 
-    con.sql("CREATE TABLE IF NOT EXISTS league_entry AS SELECT * FROM league_entry_df;")
-    con.sql("CREATE TABLE IF NOT EXISTS league AS SELECT * FROM league_df;")
-    con.sql("CREATE TABLE IF NOT EXISTS standings AS SELECT * FROM standings_df;")
-    con.sql("CREATE TABLE IF NOT EXISTS event_status AS SELECT * FROM event_status_df;")
+    with open("data/bootstrap-static.json") as json_data:
+        d = json.load(json_data)
+        static_df = pd.json_normalize(d["elements"])
+        con.sql("CREATE TABLE IF NOT EXISTS static AS SELECT * FROM static_df;")
 
     results = con.sql("SELECT DISTINCT entry_id FROM league_entry").df()
     gw = con.sql("SELECT DISTINCT event FROM event_status").df()
@@ -125,7 +134,6 @@ def calculate_points_bracket(con, bracket) -> pd.DataFrame:
         FROM gw
         GROUP BY 1
     )
-
     SELECT 
         CONCAT('GW',{brackets[bracket][0]},' - ', 'GW',{brackets[bracket][1]}) as gw_bracket,
         b.entry_name AS team_name,
@@ -148,7 +156,6 @@ def load_gw_live(con):
 
     for file in os.listdir("data/gw/."):
         if file.endswith(".json"):
-            print(file)
             with open(f"data/gw/{file}") as json_data:
                 d = json.load(json_data)
                 rows = []
@@ -163,15 +170,10 @@ def load_gw_live(con):
                 df_list.append(df)
 
     gw_live = pd.concat(df_list)
-    print(gw_live.shape)
-    print(gw_live.head())
     gw_live.to_csv("data/gw_live.csv")
     con.sql(
         f"CREATE TABLE IF NOT EXISTS gw_live AS FROM read_csv('data/gw_live.csv', auto_detect = TRUE);"
     )
-
-    results = con.sql("SELECT id, gw entry_id FROM gw_live").df()
-    print(results)
 
 
 def load_transactions(con):
@@ -180,3 +182,85 @@ def load_transactions(con):
         transactions_df = pd.json_normalize(d["transactions"])
 
     con.sql("CREATE TABLE IF NOT EXISTS transactions AS SELECT * FROM transactions_df;")
+
+
+def calc_running_standings(con):
+    sql = """
+    WITH 
+    points as (
+        SELECT team_id, gw, points, total_points
+        FROM drapht.main.total_points
+    )
+    SELECT 
+        CONCAT(b.player_first_name,' ', b.player_last_name) AS name, 
+        a.gw,
+        RANK() OVER (PARTITION BY a.gw order by a.total_points DESC) as pos
+    FROM points a
+    LEFT JOIN league_entry b
+    ON a.team_id = b.entry_id 
+    ORDER BY gw
+    """
+
+    standings_ts = con.sql(sql).df()
+    standings_ts.to_csv("data/standings_ts.csv", index=False)
+    con.sql(
+        f"CREATE TABLE IF NOT EXISTS standings_ts AS FROM read_csv('data/standings_ts.csv', auto_detect = TRUE);"
+    )
+
+
+def calc_cumm_points(con):
+    sql = """
+    WITH 
+    points as (
+        SELECT team_id, gw, points, total_points
+        FROM drapht.main.total_points
+    )
+    SELECT 
+        CONCAT(b.player_first_name,' ', b.player_last_name) AS name,
+        a.gw AS gw,
+        a.total_points AS points,
+    FROM points a
+    LEFT JOIN league_entry b
+    ON a.team_id = b.entry_id
+    ORDER BY gw, total_points desc
+    """
+
+    cumm_points = con.sql(sql).df()
+    cumm_points.to_csv("data/cumm_points.csv", index=False)
+    con.sql(
+        f"CREATE TABLE IF NOT EXISTS cumm_points AS FROM read_csv('data/cumm_points.csv', auto_detect = TRUE);"
+    )
+
+
+def calculate_blunders(con, gw):
+    sql = f"""
+    WITH transactions_c AS (
+        SELECT * 
+        FROM main.transactions tr
+        WHERE result = 'a'
+        AND event = {gw}
+    ),
+    gwl as (
+        SELECT 
+            *,
+            gw - 1 AS prev_week
+        FROM main.gw_live
+    ),
+    merged as (
+        SELECT 
+            tr.*, 
+            gwl.gw, 
+            gwl.id,
+            gwl.total_points,
+        FROM transactions_c tr
+        LEFT JOIN gwl 
+        ON tr.event = gwl.prev_week
+        AND tr.element_out = gwl.id
+    )
+    SELECT * FROM merged
+    """
+    blunders = con.sql(sql).df()
+    blunders.to_csv(f"data/blunders_{gw}.csv", index=False)
+    con.sql(
+        f"CREATE TABLE IF NOT EXISTS blunders_{gw} AS FROM read_csv('data/blunders_{gw}.csv', auto_detect = TRUE);"
+    )
