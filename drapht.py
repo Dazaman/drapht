@@ -21,6 +21,7 @@ import duckdb
 import os
 import streamlit as st
 import pandas as pd
+import matplotlib
 
 
 def get_data(con, email_address, league_code):

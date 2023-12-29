@@ -4,3 +4,4 @@ duckdb == 0.9.2
 fastapi == 0.105.0
 Flask == 3.0.0
 streamlit == 1.29.0
+matplotlib == 3.8.2
