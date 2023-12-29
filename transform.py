@@ -2,7 +2,6 @@ import os
 import json
 import pandas as pd
 from typing import NamedTuple
-import matplotlib
 
 
 def transform_details(con) -> NamedTuple("League", [("entries", list), ("gw", list)]):
