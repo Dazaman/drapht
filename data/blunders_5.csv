@@ -1,19 +1,19 @@
-team,waiver_gw,player_in,player_out,waiver_or_free,next_gw,player_in_pts,player_out_pts,net_pts
-Dandandania,5,De Cordova-Reid,Neto,f,6,3,9,-6
-Dandandania,5,Foster,Cunha,w,6,0,2,-2
-Masala Pan FC,5,Turner,José Sá,w,6,1,3,-2
-Masala Pan FC,5,Ansu Fati,J.Ayew,w,6,1,2,-1
-Lulli XI,5,Aurier,N.Aguerd,w,6,0,1,-1
-Bald is Best,5,James,Emerson,w,6,0,1,-1
-Walid Sb,5,Kaminski,Flekken,w,6,2,2,0
-Dandandania,5,Solomon,Sarr,w,6,1,1,0
-Bald is Best,5,Schade,Grealish,f,6,0,0,0
-Lulla XI,5,Matip,Pinnock,w,6,2,1,1
-Lulli XI,5,Boly,Aurier,f,6,1,0,1
-Dandandania,5,Edouard,Nketiah,w,6,2,1,1
-Dandandania,5,T.Silva,Collins,w,6,2,1,1
-Dandandania,5,Szoboszlai,Gross,w,6,2,0,2
-Bald is Best,5,L.Paquetá,Richarlison,w,6,3,1,2
-Lulli XI,5,Gibbs-White,Rodrigo,w,6,1,-2,3
-Lulli XI,5,Wilson,Antonio,w,6,6,2,4
-Lulli XI,5,Martinez,Steele,w,6,6,0,6
+team,waiver_or_free,waiver_gw,next_gw,player_in,player_in_pts,player_out,player_out_pts,net_pts
+Dandandania,f,5,6,De Cordova-Reid,3,Neto,9,-6
+Dandandania,w,5,6,Foster,0,Cunha,2,-2
+Masala Pan FC,w,5,6,Turner,1,José Sá,3,-2
+Masala Pan FC,w,5,6,Ansu Fati,1,J.Ayew,2,-1
+Lulli XI,w,5,6,Aurier,0,N.Aguerd,1,-1
+Bald is Best,w,5,6,James,0,Emerson,1,-1
+Walid Sb,w,5,6,Kaminski,2,Flekken,2,0
+Dandandania,w,5,6,Solomon,1,Sarr,1,0
+Bald is Best,f,5,6,Schade,0,Grealish,0,0
+Lulla XI,w,5,6,Matip,2,Pinnock,1,1
+Lulli XI,f,5,6,Boly,1,Aurier,0,1
+Dandandania,w,5,6,Edouard,2,Nketiah,1,1
+Dandandania,w,5,6,T.Silva,2,Collins,1,1
+Dandandania,w,5,6,Szoboszlai,2,Gross,0,2
+Bald is Best,w,5,6,L.Paquetá,3,Richarlison,1,2
+Lulli XI,w,5,6,Gibbs-White,1,Rodrigo,-2,3
+Lulli XI,w,5,6,Wilson,6,Antonio,2,4
+Lulli XI,w,5,6,Martinez,6,Steele,0,6

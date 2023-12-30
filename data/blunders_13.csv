@@ -1,21 +1,21 @@
-team,waiver_gw,player_in,player_out,waiver_or_free,next_gw,player_in_pts,player_out_pts,net_pts
-Lulli XI,13,A.Doucoure,Kulusevski,w,14,3,12,-9
-Masala Pan FC,13,Aina,Tarkowski,w,14,0,8,-8
-Walid Sb,13,N.Aguerd,Livramento,f,14,2,7,-5
-Walid Sb,13,José Sá,Martinez,f,14,0,2,-2
-Lulla XI,13,Gallagher,Jensen,w,14,-2,0,-2
-Masala Pan FC,13,Rodriguez,Maupay,f,14,6,8,-2
-Dandandania,13,Eze,Rice,w,14,0,2,-2
-Dandandania,13,Akanji,Aké,w,14,1,1,0
-Walid Sb,13,Pedro Porro,Udogie,w,14,0,0,0
-Lulli XI,13,Trossard,Douglas Luiz,w,14,2,2,0
-Lulla XI,13,Shaw,Wan-Bissaka,w,14,2,2,0
-Lulli XI,13,Pinnock,Cash,w,14,2,1,1
-Lulla XI,13,Archer,Awoniyi,f,14,1,0,1
-Walid Sb,13,Ward,Reguilón,f,14,2,1,1
-Dandandania,13,Raúl,Calvert-Lewin,f,14,2,0,2
-Masala Pan FC,13,Sterling,Maddison,w,14,2,0,2
-Lulli XI,13,Wood,Wilson,w,14,2,0,2
-Dandandania,13,Semenyo,Ferguson,w,14,5,2,3
-Dandandania,13,Coufal,Konsa,w,14,5,1,4
-Lulli XI,13,Solanke,Antonio,w,14,6,0,6
+team,waiver_or_free,waiver_gw,next_gw,player_in,player_in_pts,player_out,player_out_pts,net_pts
+Lulli XI,w,13,14,A.Doucoure,3,Kulusevski,12,-9
+Masala Pan FC,w,13,14,Aina,0,Tarkowski,8,-8
+Walid Sb,f,13,14,N.Aguerd,2,Livramento,7,-5
+Walid Sb,f,13,14,José Sá,0,Martinez,2,-2
+Lulla XI,w,13,14,Gallagher,-2,Jensen,0,-2
+Masala Pan FC,f,13,14,Rodriguez,6,Maupay,8,-2
+Dandandania,w,13,14,Eze,0,Rice,2,-2
+Dandandania,w,13,14,Akanji,1,Aké,1,0
+Walid Sb,w,13,14,Pedro Porro,0,Udogie,0,0
+Lulli XI,w,13,14,Trossard,2,Douglas Luiz,2,0
+Lulla XI,w,13,14,Shaw,2,Wan-Bissaka,2,0
+Lulli XI,w,13,14,Pinnock,2,Cash,1,1
+Lulla XI,f,13,14,Archer,1,Awoniyi,0,1
+Walid Sb,f,13,14,Ward,2,Reguilón,1,1
+Dandandania,f,13,14,Raúl,2,Calvert-Lewin,0,2
+Masala Pan FC,w,13,14,Sterling,2,Maddison,0,2
+Lulli XI,w,13,14,Wood,2,Wilson,0,2
+Dandandania,w,13,14,Semenyo,5,Ferguson,2,3
+Dandandania,w,13,14,Coufal,5,Konsa,1,4
+Lulli XI,w,13,14,Solanke,6,Antonio,0,6

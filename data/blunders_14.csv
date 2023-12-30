@@ -1,18 +1,18 @@
-team,waiver_gw,player_in,player_out,waiver_or_free,next_gw,player_in_pts,player_out_pts,net_pts
-Dandandania,14,Wissa,Raúl,w,15,0,13,-13
-Lulli XI,14,Gibbs-White,A.Doucoure,w,15,1,9,-8
-Masala Pan FC,14,Flekken,Neto,f,15,2,8,-6
-Walid Sb,14,Ajer,Ward,f,15,0,2,-2
-Walid Sb,14,Cash,N.Aguerd,w,15,0,2,-2
-Dandandania,14,Aké,Coufal,w,15,0,2,-2
-Bald is Best,14,Matip,Estupiñan,w,15,0,0,0
-Walid Sb,14,Olise,Johnson,w,15,2,2,0
-Lulli XI,14,Ferguson,Wood,w,15,1,1,0
-Lulla XI,14,João Pedro,Højlund,w,15,2,2,0
-Bald is Best,14,Wilson,Nketiah,w,15,0,0,0
-Lulla XI,14,Elanga,Gallagher,w,15,2,0,2
-Dandandania,14,Garnacho,Adingra,w,15,4,2,2
-Bald is Best,14,Almirón,Doku,w,15,2,0,2
-Masala Pan FC,14,Pau,Lascelles,f,15,6,1,5
-Lulla XI,14,Mykolenko,Guéhi,w,15,6,1,5
-Dandandania,14,Gross,Diogo J.,w,15,12,0,12
+team,waiver_or_free,waiver_gw,next_gw,player_in,player_in_pts,player_out,player_out_pts,net_pts
+Dandandania,w,14,15,Wissa,0,Raúl,13,-13
+Lulli XI,w,14,15,Gibbs-White,1,A.Doucoure,9,-8
+Masala Pan FC,f,14,15,Flekken,2,Neto,8,-6
+Walid Sb,f,14,15,Ajer,0,Ward,2,-2
+Walid Sb,w,14,15,Cash,0,N.Aguerd,2,-2
+Dandandania,w,14,15,Aké,0,Coufal,2,-2
+Bald is Best,w,14,15,Matip,0,Estupiñan,0,0
+Walid Sb,w,14,15,Olise,2,Johnson,2,0
+Lulli XI,w,14,15,Ferguson,1,Wood,1,0
+Lulla XI,w,14,15,João Pedro,2,Højlund,2,0
+Bald is Best,w,14,15,Wilson,0,Nketiah,0,0
+Lulla XI,w,14,15,Elanga,2,Gallagher,0,2
+Dandandania,w,14,15,Garnacho,4,Adingra,2,2
+Bald is Best,w,14,15,Almirón,2,Doku,0,2
+Masala Pan FC,f,14,15,Pau,6,Lascelles,1,5
+Lulla XI,w,14,15,Mykolenko,6,Guéhi,1,5
+Dandandania,w,14,15,Gross,12,Diogo J.,0,12

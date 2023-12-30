@@ -1,11 +1,11 @@
-team,waiver_gw,player_in,player_out,waiver_or_free,next_gw,player_in_pts,player_out_pts,net_pts
-Dandandania,10,Colwill,Mitchell,f,11,0,15,-15
-Dandandania,10,Konsa,Akanji,f,11,1,8,-7
-Lulli XI,10,Mudryk,Kulusevski,w,11,0,7,-7
-Walid Sb,10,Estupiñan,Dalot,w,11,0,6,-6
-Walid Sb,10,Nkunku,Ferguson,f,11,0,2,-2
-Dandandania,10,Gross,Gibbs-White,f,11,2,3,-1
-Dandandania,10,Diogo J.,Szoboszlai,f,11,3,3,0
-Masala Pan FC,10,Neto,Turner,w,11,0,0,0
-Lulla XI,10,Guéhi,Botman,w,11,5,0,5
-Bald is Best,10,Doku,March,w,11,22,0,22
+team,waiver_or_free,waiver_gw,next_gw,player_in,player_in_pts,player_out,player_out_pts,net_pts
+Dandandania,f,10,11,Colwill,0,Mitchell,15,-15
+Dandandania,f,10,11,Konsa,1,Akanji,8,-7
+Lulli XI,w,10,11,Mudryk,0,Kulusevski,7,-7
+Walid Sb,w,10,11,Estupiñan,0,Dalot,6,-6
+Walid Sb,f,10,11,Nkunku,0,Ferguson,2,-2
+Dandandania,f,10,11,Gross,2,Gibbs-White,3,-1
+Dandandania,f,10,11,Diogo J.,3,Szoboszlai,3,0
+Masala Pan FC,w,10,11,Neto,0,Turner,0,0
+Lulla XI,w,10,11,Guéhi,5,Botman,0,5
+Bald is Best,w,10,11,Doku,22,March,0,22

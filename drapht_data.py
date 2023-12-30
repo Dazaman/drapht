@@ -16,6 +16,7 @@ from transform import (
     calc_running_standings,
     calc_cumm_points,
     calculate_blunders,
+    top_n_transfers,
 )
 import duckdb
 import os
@@ -86,6 +87,7 @@ def main():
             calculate_points_bracket(con=con, brackets=brackets, bracket=i)
         calc_running_standings(con=con)
         calc_cumm_points(con=con)
+        top_n_transfers(con=con)
 
 
 if __name__ == "__main__":

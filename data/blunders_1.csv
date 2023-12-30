@@ -1,11 +1,11 @@
-team,waiver_gw,player_in,player_out,waiver_or_free,next_gw,player_in_pts,player_out_pts,net_pts
-Lulli XI,1,Colwill,Cash,f,2,1,6,-5
-Lulli XI,1,Trossard,Kulusevski,f,2,0,3,-3
-Bald is Best,1,Webster,Veltman,f,2,1,1,0
-Walid Sb,1,João Pedro,Nkunku,w,2,0,0,0
-Dandandania,1,J.Timber,Aké,w,2,0,0,0
-Lulla XI,1,Højlund,Shoretire,w,2,0,0,0
-Dandandania,1,L.Paquetá,Mount,w,2,6,2,4
-Bald is Best,1,Walker,T.Silva,w,2,6,1,5
-Bald is Best,1,Gvardiol,Bailly,w,2,6,0,6
-Lulla XI,1,Antonio,Ferguson,f,2,9,1,8
+team,waiver_or_free,waiver_gw,next_gw,player_in,player_in_pts,player_out,player_out_pts,net_pts
+Lulli XI,f,1,2,Colwill,1,Cash,6,-5
+Lulli XI,f,1,2,Trossard,0,Kulusevski,3,-3
+Bald is Best,f,1,2,Webster,1,Veltman,1,0
+Walid Sb,w,1,2,João Pedro,0,Nkunku,0,0
+Dandandania,w,1,2,J.Timber,0,Aké,0,0
+Lulla XI,w,1,2,Højlund,0,Shoretire,0,0
+Dandandania,w,1,2,L.Paquetá,6,Mount,2,4
+Bald is Best,w,1,2,Walker,6,T.Silva,1,5
+Bald is Best,w,1,2,Gvardiol,6,Bailly,0,6
+Lulla XI,f,1,2,Antonio,9,Ferguson,1,8

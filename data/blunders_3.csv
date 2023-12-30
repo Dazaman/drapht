@@ -1,18 +1,18 @@
-team,waiver_gw,player_in,player_out,waiver_or_free,next_gw,player_in_pts,player_out_pts,net_pts
-Masala Pan FC,3,Semenyo,Ferguson,f,4,1,17,-16
-Lulli XI,3,Antonio,Wilson,w,4,2,6,-4
-Walid Sb,3,Udogie,Aké,w,4,5,8,-3
-Dandandania,3,Bailey,Mac Allister,w,4,1,3,-2
-Dandandania,3,Cunha,Darwin,w,4,6,8,-2
-Masala Pan FC,3,Van de Ven,Gabriel,w,4,1,2,-1
-Lulli XI,3,E.Royal,Zinchenko,w,4,1,2,-1
-Masala Pan FC,3,McGinn,Douglas Luiz,w,4,2,2,0
-Masala Pan FC,3,Sarabia,Tonali,w,4,1,1,0
-Bald is Best,3,Dalot,Pau,w,4,1,1,0
-Lulla XI,3,Digne,Wan-Bissaka,w,4,1,1,0
-Lulli XI,3,Vicario,Johnstone,w,4,2,1,1
-Dandandania,3,Bissouma,Barnes,f,4,2,1,1
-Dandandania,3,Ward-Prowse,Gross,w,4,7,3,4
-Dandandania,3,Pedro Porro,Shaw,f,4,4,0,4
-Lulla XI,3,Romero,Dunk,w,4,7,2,5
-Dandandania,3,Neto,Havertz,f,4,10,2,8
+team,waiver_or_free,waiver_gw,next_gw,player_in,player_in_pts,player_out,player_out_pts,net_pts
+Masala Pan FC,f,3,4,Semenyo,1,Ferguson,17,-16
+Lulli XI,w,3,4,Antonio,2,Wilson,6,-4
+Walid Sb,w,3,4,Udogie,5,Aké,8,-3
+Dandandania,w,3,4,Bailey,1,Mac Allister,3,-2
+Dandandania,w,3,4,Cunha,6,Darwin,8,-2
+Masala Pan FC,w,3,4,Van de Ven,1,Gabriel,2,-1
+Lulli XI,w,3,4,E.Royal,1,Zinchenko,2,-1
+Masala Pan FC,w,3,4,McGinn,2,Douglas Luiz,2,0
+Masala Pan FC,w,3,4,Sarabia,1,Tonali,1,0
+Bald is Best,w,3,4,Dalot,1,Pau,1,0
+Lulla XI,w,3,4,Digne,1,Wan-Bissaka,1,0
+Lulli XI,w,3,4,Vicario,2,Johnstone,1,1
+Dandandania,f,3,4,Bissouma,2,Barnes,1,1
+Dandandania,w,3,4,Ward-Prowse,7,Gross,3,4
+Dandandania,f,3,4,Pedro Porro,4,Shaw,0,4
+Lulla XI,w,3,4,Romero,7,Dunk,2,5
+Dandandania,f,3,4,Neto,10,Havertz,2,8

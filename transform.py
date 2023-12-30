@@ -280,12 +280,12 @@ def calculate_blunders(con, gw):
     )
     SELECT 
         team_name as team,
-        event as waiver_gw,
-        element_in_name as player_in,
-        element_out_name as player_out,
         kind as waiver_or_free,
+        event as waiver_gw,
         gw as next_gw,
+        element_in_name as player_in,
         in_pts as player_in_pts,
+        element_out_name as player_out,
         out_pts as player_out_pts,
         diff as net_pts,
     FROM details
@@ -303,12 +303,21 @@ def top_n_transfers(con):
 
     for file in os.listdir("data/."):
         if file.startswith("blunders"):
-            df = pd.read_csv(file)
+            df = pd.read_csv(f"data/{file}")
             df_list.append(df)
 
-    top_df = pd.concat(df_list)
+    df_stacked = pd.concat(df_list)
 
-    top_df.to_csv("data/top_df.csv")
+    top_df = df_stacked.nlargest(10, "net_pts")
+    top_df.to_csv("data/top_df.csv", index=False)
+
     con.sql(
-        f"CREATE TABLE IF NOT EXISTS top_n_transfers AS FROM read_csv('data/top_n_transfers.csv', auto_detect = TRUE);"
+        f"CREATE TABLE IF NOT EXISTS top_n_transfers AS FROM read_csv('data/top_df.csv', auto_detect = TRUE);"
+    )
+
+    bottom_df = df_stacked.nsmallest(10, "net_pts")
+    bottom_df.to_csv("data/bottom_df.csv", index=False)
+
+    con.sql(
+        f"CREATE TABLE IF NOT EXISTS bottom_n_transfers AS FROM read_csv('data/bottom_df.csv', auto_detect = TRUE);"
     )

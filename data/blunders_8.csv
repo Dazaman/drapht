@@ -1,14 +1,14 @@
-team,waiver_gw,player_in,player_out,waiver_or_free,next_gw,player_in_pts,player_out_pts,net_pts
-Lulla XI,8,Johnstone,Flekken,w,9,1,6,-5
-Masala Pan FC,8,Edouard,Darwin,f,9,1,4,-3
-Dandandania,8,Mitchell,Zouma,w,9,-1,0,-1
-Bald is Best,8,Gakpo,Nketiah,w,9,0,0,0
-Bald is Best,8,Broja,Gakpo,f,9,0,0,0
-Lulli XI,8,Richarlison,Doku,w,9,6,6,0
-Lulli XI,8,Cunha,Wilson,w,9,7,6,1
-Walid Sb,8,Castagne,Estupiñan,w,9,1,0,1
-Walid Sb,8,Martinez,Areola,w,9,3,1,2
-Masala Pan FC,8,Hee Chan,Johnson,w,9,4,1,3
-Dandandania,8,Solanke,Amdouni,w,9,7,2,5
-Masala Pan FC,8,Lascelles,Tarkowski,f,9,6,0,6
-Lulli XI,8,Douglas Luiz,Diogo J.,f,9,15,3,12
+team,waiver_or_free,waiver_gw,next_gw,player_in,player_in_pts,player_out,player_out_pts,net_pts
+Lulla XI,w,8,9,Johnstone,1,Flekken,6,-5
+Masala Pan FC,f,8,9,Edouard,1,Darwin,4,-3
+Dandandania,w,8,9,Mitchell,-1,Zouma,0,-1
+Bald is Best,w,8,9,Gakpo,0,Nketiah,0,0
+Bald is Best,f,8,9,Broja,0,Gakpo,0,0
+Lulli XI,w,8,9,Richarlison,6,Doku,6,0
+Lulli XI,w,8,9,Cunha,7,Wilson,6,1
+Walid Sb,w,8,9,Castagne,1,Estupiñan,0,1
+Walid Sb,w,8,9,Martinez,3,Areola,1,2
+Masala Pan FC,w,8,9,Hee Chan,4,Johnson,1,3
+Dandandania,w,8,9,Solanke,7,Amdouni,2,5
+Masala Pan FC,f,8,9,Lascelles,6,Tarkowski,0,6
+Lulli XI,f,8,9,Douglas Luiz,15,Diogo J.,3,12
