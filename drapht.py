@@ -29,17 +29,28 @@ def load_current_gw_teams():
 @st.cache_data
 def load_bracket_dfs():
     bracket_1 = pd.read_csv("data/results_1.csv")
+    bracket_1["points"] = bracket_1["points"].astype(int)
     bracket_2 = pd.read_csv("data/results_2.csv")
+    bracket_2["points"] = bracket_2["points"].astype(int)
     bracket_3 = pd.read_csv("data/results_3.csv")
+    bracket_3["points"] = bracket_3["points"].astype(int)
     bracket_4 = pd.read_csv("data/results_4.csv")
+    bracket_4["points"] = bracket_4["points"].astype(int)
 
     return bracket_1, bracket_2, bracket_3, bracket_4
 
 
 @st.cache_data
 def standings():
+    col_names = {
+        "gw": "Gameweek",
+        "pos": "Position",
+        "name": "Name",
+    }
     standings_ts = pd.read_csv("data/standings_ts.csv")
     standings_ts["pos"] = standings_ts["pos"] * -1
+    standings_ts = standings_ts.rename(columns=col_names)
+    standings_ts["Gameweek"] = standings_ts["Gameweek"].astype(int)
 
     cumm_points = pd.read_csv("data/cumm_points.csv")
 
@@ -80,8 +91,9 @@ def main():
     top_n, bottom_n = transactions()
 
     # Space out the maps so the first one is 2x the size of the other three
-    c1, c2, c3 = st.columns((0.7, 0.2, 2))
+    c1, c2, c3 = st.columns((1, 0.2, 2))
 
+    c3.header("Transfers!")
     blunders, smart_moves, transactions_gw = c3.tabs(
         ["Top Blunders", "Top Transfers", "Transactions by GW"]
     )
@@ -117,12 +129,12 @@ def main():
             hide_index=True,
             use_container_width=True,
         )
-
-    c1.line_chart(standings_ts, x="gw", y="pos", color="name")
+    c1.caption("** Ignore the minus sign lol, will fix it later")
+    c1.line_chart(standings_ts, x="Gameweek", y="Position", color="Name")
     # c1.line_chart(cumm_points, x="gw", y="points", color="name")
 
     with blunders:
-        st.subheader("Top Blunders")
+        st.subheader("Top 10 Blunders")
         st.dataframe(
             bottom_n.style.background_gradient(cmap="YlOrRd_r", subset=["Net Points"]),
             hide_index=True,
@@ -130,7 +142,7 @@ def main():
         )
 
     with smart_moves:
-        st.subheader("Top Transfers")
+        st.subheader("Top 10 Smart Transfers")
         st.dataframe(
             top_n.style.background_gradient(cmap="YlGn", subset=["Net Points"]),
             hide_index=True,
