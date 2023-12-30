@@ -6,7 +6,7 @@ import re
 import os
 
 
-def get_json(json_files, apis, email_address) -> None:
+def get_json(json_files, apis) -> None:
     """
     Pulls fpl draft league data using an api call, and stores the output
     in a json file at the specified location.
@@ -15,13 +15,12 @@ def get_json(json_files, apis, email_address) -> None:
 
     :json_files: The file path and name of the json file you wish to create
     :apis: The api url/endpoints to call for the files
-    :param email_address: Your email address to authenticate with premierleague.com
+    :param : Your email address to authenticate with premierleague.com
     :returns:
     """
 
     # Post credentials for authentication
     # pwd = getpass.getpass("Enter Password: ")
-    pwd = "Yusuf1993!"
     session = requests.session()
 
     ### Login api doesnt work anymore due to captchas
@@ -33,7 +32,7 @@ def get_json(json_files, apis, email_address) -> None:
     # url = "https://users.premierleague.com/accounts/login/"
     # # payload = {
     # #     "password": pwd,
-    # #     "login": email_address,
+    # #     "login": ,
     # #     "app": "plfpl-web",
     # # }
     # status = session.get(url)
@@ -50,7 +49,7 @@ def get_json(json_files, apis, email_address) -> None:
             json.dump(jsonResponse, outfile)
 
 
-def get_static_data(email_address) -> list:
+def get_static_data() -> list:
     apis = [
         "https://draft.premierleague.com/api/bootstrap-dynamic",
         "https://draft.premierleague.com/api/game",
@@ -64,12 +63,12 @@ def get_static_data(email_address) -> list:
         "data/event_status.json",
     ]
 
-    get_json(json_files=json_files, apis=apis, email_address=email_address)
+    get_json(json_files=json_files, apis=apis)
 
     return json_files
 
 
-def get_league_data(email_address, league_code) -> list:
+def get_league_data(league_code) -> list:
     apis = [
         f"https://draft.premierleague.com/api/league/{league_code}/details",
         f"https://draft.premierleague.com/api/league/{league_code}/element-status",
@@ -83,12 +82,12 @@ def get_league_data(email_address, league_code) -> list:
         "data/choices.json",
     ]
 
-    get_json(json_files=json_files, apis=apis, email_address=email_address)
+    get_json(json_files=json_files, apis=apis)
 
     return json_files
 
 
-def get_team_data(email_address, team_id):
+def get_team_data(team_id):
     apis = [
         f"https://draft.premierleague.com/api/entry/{team_id}/public",
         f"https://draft.premierleague.com/api/entry/{team_id}/history",
@@ -108,10 +107,10 @@ def get_team_data(email_address, team_id):
         f"data/team_{team_id}/watchlist.json",
     ]
 
-    get_json(json_files=json_files, apis=apis, email_address=email_address)
+    get_json(json_files=json_files, apis=apis)
 
 
-def get_gw_data(email_address, gw):
+def get_gw_data(gw):
     apis = [
         f"https://draft.premierleague.com/api/event/{gw}/live",
     ]
@@ -119,10 +118,10 @@ def get_gw_data(email_address, gw):
         f"data/gw/{gw}_live.json",
     ]
 
-    get_json(json_files=json_files, apis=apis, email_address=email_address)
+    get_json(json_files=json_files, apis=apis)
 
 
-def get_gw_team_data(email_address, team_id, gw):
+def get_gw_team_data(team_id, gw):
     apis = [
         f"https://draft.premierleague.com/api/entry/{team_id}/event/{gw}",
     ]
@@ -130,4 +129,4 @@ def get_gw_team_data(email_address, team_id, gw):
         f"data/team_{team_id}/{gw}_event.json",
     ]
 
-    get_json(json_files=json_files, apis=apis, email_address=email_address)
+    get_json(json_files=json_files, apis=apis)

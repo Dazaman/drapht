@@ -41,6 +41,13 @@ def transform_details(con) -> NamedTuple("League", [("entries", list), ("gw", li
     results = con.sql("SELECT DISTINCT entry_id FROM league_entry").df()
     gw = con.sql("SELECT DISTINCT event FROM event_status").df()
 
+    with open(r"data_gw", "w") as fp:
+        fp.writelines(gw["event"].astype(str).to_list())
+
+    with open(r"data_teams", "w") as fp:
+        # fp.writelines(results["entry_id"].astype(str).to_list())
+        fp.write("\n".join(results["entry_id"].astype(str).to_list()))
+
     return results["entry_id"].to_list(), gw["event"].to_list()
 
 
@@ -110,14 +117,7 @@ def concat_team_points(con):
     )
 
 
-def calculate_points_bracket(con, bracket) -> pd.DataFrame:
-    brackets = {
-        "1": ("1", "10"),
-        "2": ("11", "20"),
-        "3": ("21", "29"),
-        "4": ("30", "38"),
-    }
-
+def calculate_points_bracket(con, brackets, bracket) -> pd.DataFrame:
     sql = f"""
     WITH 
     gw AS (
@@ -252,8 +252,7 @@ def calculate_blunders(con, gw):
     merged as (
         SELECT 
             tr.*, 
-            gwl_out.gw, 
-            gwl_out.id,
+            gwl_out.gw,
             gwl_out.total_points as out_pts,
             gwl_in.total_points as in_pts,
         FROM transactions_c tr
@@ -267,6 +266,7 @@ def calculate_blunders(con, gw):
     details as (
         SELECT 
             m.*,
+            b.entry_name AS team_name,
             pi.web_name element_in_name,
             po.web_name element_out_name,
             in_pts - out_pts as diff
@@ -275,8 +275,21 @@ def calculate_blunders(con, gw):
         ON m.element_in = pi.id
         LEFT JOIN players po
         ON m.element_out = po.id
+        LEFT JOIN league_entry b
+        ON m.entry = b.entry_id
     )
-    SELECT * FROM details
+    SELECT 
+        team_name as team,
+        event as waiver_gw,
+        element_in_name as player_in,
+        element_out_name as player_out,
+        kind as waiver_or_free,
+        gw as next_gw,
+        in_pts as player_in_pts,
+        out_pts as player_out_pts,
+        diff as net_pts,
+    FROM details
+    ORDER BY diff asc
     """
     blunders = con.sql(sql).df()
     blunders.to_csv(f"data/blunders_{gw}.csv", index=False)

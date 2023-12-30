@@ -1,22 +1,3 @@
-from extract import (
-    get_json,
-    get_league_data,
-    get_static_data,
-    get_gw_data,
-    get_team_data,
-    get_gw_team_data,
-)
-from transform import (
-    transform_details,
-    load_team_points,
-    load_gw_live,
-    load_transactions,
-    concat_team_points,
-    calculate_points_bracket,
-    calc_running_standings,
-    calc_cumm_points,
-    calculate_blunders,
-)
 import duckdb
 import os
 import streamlit as st
@@ -24,65 +5,15 @@ import pandas as pd
 import matplotlib
 
 
-def get_data(con, email_address, league_code):
-    static_files = get_static_data(email_address=email_address)
-    league_files = get_league_data(email_address=email_address, league_code=league_code)
-
-    entries, gw = transform_details(con)
-    gw = list(range(1, gw[0]))
-    print("entries", entries)
-    print("max gw ", gw)
-
-    for team in entries:
-        get_team_data(email_address=email_address, team_id=team)
-        for week in gw:
-            get_gw_team_data(email_address=email_address, team_id=team, gw=week)
-
-    for week in gw:
-        get_gw_data(email_address=email_address, gw=week)
-
-
-def transform_load_data(
-    con,
-):
-    entries, gw = transform_details(con)
-    gw = list(range(1, gw[0] - 1))
-
-    load_team_points(con=con)
-    concat_team_points(con=con)
-    load_gw_live(con=con)
-    load_transactions(con=con)
-
-    for i in gw:
-        calculate_blunders(con=con, gw=i)
-
-
+@st.cache()
 def main():
-    email_address = "dazam92@gmail.com"
-    league_code = "56578"
-
-    refresh = False
-    transform = False
-    load = False
-
-    if not os.path.exists(f"data"):
-        os.makedirs(f"data")
-        os.makedirs("data/GW")
-
-    # con = duckdb.connect("drapht.db")
-
-    # if refresh:
-    #     get_data(con=con, email_address=email_address, league_code=league_code)
-    # if transform:
-    #     transform_load_data(con=con)
-    # if load:
-    #     calculate_points_bracket(con=con, bracket="1")
-    #     calculate_points_bracket(con=con, bracket="2")
-    #     calculate_points_bracket(con=con, bracket="3")
-    #     calculate_points_bracket(con=con, bracket="4")
-
-    #     calc_running_standings(con=con)
-    #     calc_cumm_points(con=con)
+    # Read current gw, use as gw[0]
+    with open(r"data_gw", "r") as fp:
+        gw = fp.readlines()
+    # Read in team names
+    with open(r"data_teams", "r") as fp:
+        t = fp.readlines()
+        teams = [i.strip() for i in t]
 
     st.set_page_config(layout="wide")
     st.title("FPL Draft Standings")
