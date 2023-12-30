@@ -1,23 +1,23 @@
-added,element_in,element_out,entry,event,id,index,kind,priority,result,gw,id:1,out_pts,in_pts,element_in_name,element_out_name,diff
-2023-12-05T00:37:01.769553Z,13,82,218961,15,28917210,,f,,a,16,82,1,1,Nketiah,Semenyo,0
-2023-12-04T10:42:59.188222Z,419,90,230738,15,28612942,6.0,w,2.0,a,16,90,0,-1,Lascelles,Ajer,-1
-2023-12-04T03:45:59.414062Z,77,101,229056,15,28502907,8.0,w,3.0,a,16,101,3,7,Neto,Flekken,4
-2023-12-04T18:51:03.151201Z,304,134,218961,15,28894178,,f,,a,16,134,7,0,Mac Allister,Gross,-7
-2023-12-04T18:57:21.318577Z,109,234,218961,15,28894884,,f,,a,16,234,0,2,Mee,Mitchell,2
-2023-12-04T18:54:05.895616Z,450,304,218961,15,28894538,,f,,a,16,304,0,3,Johnson,Mac Allister,3
-2023-12-04T08:51:27.045102Z,501,309,249496,15,28569649,2.0,w,1.0,a,16,309,2,2,Kulusevski,Szoboszlai,0
-2023-12-04T17:46:06.498021Z,365,378,219160,15,28863846,20.0,w,6.0,a,16,378,2,1,Rodrigo,Elanga,-1
-2023-12-04T19:02:57.796465Z,509,402,218851,15,28895487,,f,,a,16,402,2,15,Richarlison,Almirón,13
-2023-12-04T17:46:06.497886Z,409,424,219160,15,28863841,4.0,w,1.0,a,16,424,0,2,Dubravka,Pope,2
-2023-12-05T17:58:47.886417Z,297,433,218851,15,28967217,,f,,a,16,433,4,1,Gakpo,Wilson,-3
-2023-12-04T18:47:43.600251Z,256,542,218961,15,28893766,,f,,a,16,542,2,6,Iwobi,Souček,4
-2023-12-04T18:34:19.766974Z,281,604,229056,15,28891983,,f,,a,16,604,0,0,Ream,Aina,0
-2023-12-04T17:46:06.498002Z,593,33,219160,15,28863845,19.0,w,5.0,a,16,33,2,2,Amdouni,Archer,0
-2023-12-03T07:01:17.224903Z,542,226,218961,15,28230183,3.0,w,1.0,a,16,226,0,2,Souček,Eze,2
-2023-12-04T18:54:53.182344Z,302,341,218961,15,28894613,,f,,a,16,341,1,1,Konaté,Akanji,0
-2023-12-03T07:01:17.224997Z,86,382,218961,15,28230186,13.0,w,4.0,a,16,382,2,9,Tavernier,Garnacho,7
-2023-12-04T18:14:37.036183Z,49,569,230738,15,28888600,,f,,a,16,569,2,10,Martinez,José Sá,8
-2023-12-04T03:45:59.413988Z,677,12,229056,15,28502905,1.0,w,1.0,a,16,12,2,0,Doku,Martinelli,-2
-2023-12-04T19:01:11.511328Z,298,305,218851,15,28895296,,f,,a,16,305,0,0,Gomez,Matip,0
-2023-12-05T16:06:12.093735Z,301,524,249496,15,28955255,,f,,a,16,524,0,0,Kelleher,Areola,0
-2023-12-04T17:46:06.497963Z,283,29,219160,15,28863843,15.0,w,3.0,a,16,29,2,6,Robinson,White,4
+team,waiver_gw,player_in,player_out,waiver_or_free,next_gw,player_in_pts,player_out_pts,net_pts
+Dandandania,15,Mac Allister,Gross,f,16,0,7,-7
+Bald is Best,15,Gakpo,Wilson,f,16,1,4,-3
+Masala Pan FC,15,Doku,Martinelli,w,16,0,2,-2
+Walid Sb,15,Lascelles,Ajer,w,16,-1,0,-1
+Lulla XI,15,Rodrigo,Elanga,w,16,1,2,-1
+Dandandania,15,Nketiah,Semenyo,f,16,1,1,0
+Lulli XI,15,Kulusevski,Szoboszlai,w,16,2,2,0
+Masala Pan FC,15,Ream,Aina,f,16,0,0,0
+Lulla XI,15,Amdouni,Archer,w,16,2,2,0
+Dandandania,15,Konaté,Akanji,f,16,1,1,0
+Bald is Best,15,Gomez,Matip,f,16,0,0,0
+Lulli XI,15,Kelleher,Areola,f,16,0,0,0
+Dandandania,15,Mee,Mitchell,f,16,2,0,2
+Lulla XI,15,Dubravka,Pope,w,16,2,0,2
+Dandandania,15,Souček,Eze,w,16,2,0,2
+Dandandania,15,Johnson,Mac Allister,f,16,3,0,3
+Masala Pan FC,15,Neto,Flekken,w,16,7,3,4
+Dandandania,15,Iwobi,Souček,f,16,6,2,4
+Lulla XI,15,Robinson,White,w,16,6,2,4
+Dandandania,15,Tavernier,Garnacho,w,16,9,2,7
+Walid Sb,15,Martinez,José Sá,f,16,10,2,8
+Bald is Best,15,Richarlison,Almirón,f,16,15,2,13

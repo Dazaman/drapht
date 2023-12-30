@@ -1,11 +1,11 @@
-added,element_in,element_out,entry,event,id,index,kind,priority,result,gw,id:1,out_pts,in_pts,element_in_name,element_out_name,diff
-2023-08-11T07:26:19.798000Z,197,36,249496,1,933299,,f,,a,2,36,6,1,Colwill,Cash,-5
-2023-08-10T19:53:11.650569Z,523,132,219160,1,902729,,f,,a,2,132,1,9,Antonio,Ferguson,8
-2023-08-11T04:58:11.186617Z,153,151,218851,1,926529,,f,,a,2,151,1,1,Webster,Veltman,0
-2023-08-10T06:54:51.752541Z,135,212,230738,1,699002,5.0,w,2.0,a,2,212,0,0,João Pedro,Nkunku,0
-2023-08-10T05:47:16.925192Z,369,217,218851,1,692408,1.0,w,1.0,a,2,217,1,6,Walker,T.Silva,5
-2023-08-08T00:03:56.136434Z,585,342,218961,1,354487,3.0,w,1.0,a,2,342,0,0,J.Timber,Aké,0
-2023-08-11T07:27:30.784844Z,26,501,249496,1,933356,,f,,a,2,501,3,0,Trossard,Kulusevski,-3
-2023-08-08T00:03:56.136488Z,539,209,218961,1,354488,9.0,w,2.0,a,2,209,2,6,L.Paquetá,Mount,4
-2023-08-10T05:47:16.925284Z,615,375,218851,1,692411,8.0,w,4.0,a,2,375,0,6,Gvardiol,Bailly,6
-2023-08-08T07:22:12.838777Z,616,399,219160,1,382391,2.0,w,1.0,a,2,399,0,0,Højlund,Shoretire,0
+team,waiver_gw,player_in,player_out,waiver_or_free,next_gw,player_in_pts,player_out_pts,net_pts
+Lulli XI,1,Colwill,Cash,f,2,1,6,-5
+Lulli XI,1,Trossard,Kulusevski,f,2,0,3,-3
+Bald is Best,1,Webster,Veltman,f,2,1,1,0
+Walid Sb,1,João Pedro,Nkunku,w,2,0,0,0
+Dandandania,1,J.Timber,Aké,w,2,0,0,0
+Lulla XI,1,Højlund,Shoretire,w,2,0,0,0
+Dandandania,1,L.Paquetá,Mount,w,2,6,2,4
+Bald is Best,1,Walker,T.Silva,w,2,6,1,5
+Bald is Best,1,Gvardiol,Bailly,w,2,6,0,6
+Lulla XI,1,Antonio,Ferguson,f,2,9,1,8

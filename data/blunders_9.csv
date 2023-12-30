@@ -1,16 +1,16 @@
-added,element_in,element_out,entry,event,id,index,kind,priority,result,gw,id:1,out_pts,in_pts,element_in_name,element_out_name,diff
-2023-10-20T09:34:15.209959Z,311,197,249496,9,21438634,12.0,w,3.0,a,10,197,1,6,Tsimikas,Colwill,5
-2023-10-20T10:19:46.545468Z,447,210,218961,9,21481366,,f,,a,10,210,0,2,Gibbs-White,Mudryk,2
-2023-10-20T09:41:30.405927Z,342,217,218961,9,21447726,4.0,w,1.0,a,10,217,1,0,Aké,T.Silva,-1
-2023-10-20T09:42:17.506092Z,528,281,219160,9,21448613,16.0,w,2.0,a,10,281,2,2,Coufal,Ream,0
-2023-10-20T19:17:21.352436Z,395,307,229056,9,21515007,,f,,a,10,307,0,0,R.Varane,Robertson,0
-2023-10-12T17:02:45.522082Z,293,326,229056,9,20569180,1.0,w,1.0,a,10,326,2,10,Darwin,Morris,8
-2023-10-20T09:41:30.406004Z,210,376,218961,9,21447728,14.0,w,3.0,a,10,376,0,0,Mudryk,Casemiro,0
-2023-10-20T09:34:15.209937Z,433,590,249496,9,21438633,3.0,w,2.0,a,10,590,2,13,Wilson,Cunha,11
-2023-10-20T09:34:15.210017Z,524,613,249496,9,21438637,20.0,w,6.0,a,10,613,2,3,Areola,Kaminski,1
-2023-10-20T09:14:48.708788Z,377,687,230738,9,21415954,9.0,w,3.0,a,10,687,2,1,Dalot,Castagne,-1
-2023-10-12T17:02:45.522158Z,362,699,229056,9,20569181,11.0,w,2.0,a,10,699,1,2,Palmer,Ansu Fati,1
-2023-10-21T01:26:39.166934Z,13,193,218851,9,21527122,,f,,a,10,193,0,17,Nketiah,Broja,17
-2023-10-20T09:41:30.406062Z,309,249,218961,9,21447731,23.0,w,6.0,a,10,249,3,12,Szoboszlai,A.Doucoure,9
-2023-10-20T09:42:17.506037Z,168,437,219160,9,21448612,10.0,w,1.0,a,10,437,1,0,Foster,Awoniyi,-1
-2023-10-12T17:02:45.522181Z,584,611,229056,9,20569182,17.0,w,3.0,a,10,611,2,2,Pau,Disasi,0
+team,waiver_gw,player_in,player_out,waiver_or_free,next_gw,player_in_pts,player_out_pts,net_pts
+Dandandania,9,Aké,T.Silva,w,10,0,1,-1
+Walid Sb,9,Dalot,Castagne,w,10,1,2,-1
+Lulla XI,9,Foster,Awoniyi,w,10,0,1,-1
+Lulla XI,9,Coufal,Ream,w,10,2,2,0
+Masala Pan FC,9,R.Varane,Robertson,f,10,0,0,0
+Dandandania,9,Mudryk,Casemiro,w,10,0,0,0
+Masala Pan FC,9,Pau,Disasi,w,10,2,2,0
+Lulli XI,9,Areola,Kaminski,w,10,3,2,1
+Masala Pan FC,9,Palmer,Ansu Fati,w,10,2,1,1
+Dandandania,9,Gibbs-White,Mudryk,f,10,2,0,2
+Lulli XI,9,Tsimikas,Colwill,w,10,6,1,5
+Masala Pan FC,9,Darwin,Morris,w,10,10,2,8
+Dandandania,9,Szoboszlai,A.Doucoure,w,10,12,3,9
+Lulli XI,9,Wilson,Cunha,w,10,13,2,11
+Bald is Best,9,Nketiah,Broja,f,10,17,0,17

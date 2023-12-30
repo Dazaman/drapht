@@ -1,19 +1,19 @@
-added,element_in,element_out,entry,event,id,index,kind,priority,result,gw,id:1,out_pts,in_pts,element_in_name,element_out_name,diff
-2023-09-29T04:35:48.138734Z,140,26,218851,7,17743471,4.0,w,1.0,a,8,26,1,7,March,Trossard,6
-2023-09-29T16:07:44.663083Z,613,49,249496,7,18079734,,f,,a,8,49,3,3,Kaminski,Martinez,0
-2023-09-29T07:18:25.822988Z,523,85,249496,7,17829448,5.0,w,1.0,a,8,85,1,1,Antonio,Solanke,0
-2023-09-29T07:18:25.823062Z,36,112,249496,7,17829450,15.0,w,3.0,a,8,112,1,2,Cash,Pinnock,1
-2023-09-29T09:52:22.836302Z,402,122,230738,7,18009999,7.0,w,1.0,a,8,122,7,1,Almirón,Adingra,-6
-2023-09-29T09:52:22.836375Z,31,195,230738,7,18010001,20.0,w,3.0,a,8,195,0,7,Zinchenko,Chilwell,7
-2023-09-29T04:35:48.138811Z,506,203,218851,7,17743473,13.0,w,3.0,a,8,203,0,6,Pedro Porro,Gusto,6
-2023-09-29T08:41:35.911285Z,106,226,219160,7,17896128,6.0,w,1.0,a,8,226,0,10,Jensen,Eze,10
-2023-09-30T02:18:58.473926Z,13,297,218851,7,18114722,,f,,a,8,297,0,2,Nketiah,Gakpo,2
-2023-09-24T15:34:46.732200Z,369,342,229056,7,16207830,1.0,w,1.0,a,8,342,2,2,Walker,Aké,0
-2023-09-29T03:32:43.057512Z,376,379,218961,7,17725205,11.0,w,4.0,a,8,379,1,1,Casemiro,Eriksen,0
-2023-09-29T11:31:50.231942Z,524,569,230738,7,18048177,,f,,a,8,569,3,1,Areola,José Sá,-2
-2023-09-24T15:34:46.732297Z,265,234,229056,7,16207833,21.0,w,4.0,a,8,234,6,7,Tarkowski,Mitchell,1
-2023-09-29T03:32:43.057468Z,249,309,218961,7,17725203,3.0,w,2.0,a,8,309,4,8,A.Doucoure,Szoboszlai,4
-2023-09-24T15:34:46.732278Z,119,590,229056,7,16207832,9.0,w,3.0,a,8,590,2,5,Wissa,Cunha,3
-2023-09-29T21:54:37.239289Z,544,139,218961,7,18104987,,f,,a,8,139,0,1,Zouma,Lamptey,1
-2023-09-30T07:47:35.824995Z,246,690,218961,7,18128063,,f,,a,8,690,1,2,Calvert-Lewin,Beto,1
-2023-09-29T03:32:43.057550Z,690,225,218961,7,17725207,23.0,w,6.0,a,8,225,2,1,Beto,Edouard,-1
+team,waiver_gw,player_in,player_out,waiver_or_free,next_gw,player_in_pts,player_out_pts,net_pts
+Walid Sb,7,Almirón,Adingra,w,8,1,7,-6
+Walid Sb,7,Areola,José Sá,f,8,1,3,-2
+Dandandania,7,Beto,Edouard,w,8,1,2,-1
+Lulli XI,7,Kaminski,Martinez,f,8,3,3,0
+Lulli XI,7,Antonio,Solanke,w,8,1,1,0
+Masala Pan FC,7,Walker,Aké,w,8,2,2,0
+Dandandania,7,Casemiro,Eriksen,w,8,1,1,0
+Lulli XI,7,Cash,Pinnock,w,8,2,1,1
+Masala Pan FC,7,Tarkowski,Mitchell,w,8,7,6,1
+Dandandania,7,Zouma,Lamptey,f,8,1,0,1
+Dandandania,7,Calvert-Lewin,Beto,f,8,2,1,1
+Bald is Best,7,Nketiah,Gakpo,f,8,2,0,2
+Masala Pan FC,7,Wissa,Cunha,w,8,5,2,3
+Dandandania,7,A.Doucoure,Szoboszlai,w,8,8,4,4
+Bald is Best,7,March,Trossard,w,8,7,1,6
+Bald is Best,7,Pedro Porro,Gusto,w,8,6,0,6
+Walid Sb,7,Zinchenko,Chilwell,w,8,7,0,7
+Lulla XI,7,Jensen,Eze,w,8,10,0,10

@@ -296,3 +296,19 @@ def calculate_blunders(con, gw):
     con.sql(
         f"CREATE TABLE IF NOT EXISTS blunders_{gw} AS FROM read_csv('data/blunders_{gw}.csv', auto_detect = TRUE);"
     )
+
+
+def top_n_transfers(con):
+    df_list = []
+
+    for file in os.listdir("data/."):
+        if file.startswith("blunders"):
+            df = pd.read_csv(file)
+            df_list.append(df)
+
+    top_df = pd.concat(df_list)
+
+    top_df.to_csv("data/top_df.csv")
+    con.sql(
+        f"CREATE TABLE IF NOT EXISTS top_n_transfers AS FROM read_csv('data/top_n_transfers.csv', auto_detect = TRUE);"
+    )

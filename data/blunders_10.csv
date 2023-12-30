@@ -1,11 +1,11 @@
-added,element_in,element_out,entry,event,id,index,kind,priority,result,gw,id:1,out_pts,in_pts,element_in_name,element_out_name,diff
-2023-10-27T12:12:19.415948Z,212,132,230738,10,22667466,,f,,a,11,132,2,0,Nkunku,Ferguson,-2
-2023-10-27T05:03:25.722054Z,197,234,218961,10,22648029,,f,,a,11,234,15,0,Colwill,Mitchell,-15
-2023-10-27T10:19:52.061535Z,294,309,218961,10,22660987,,f,,a,11,309,3,3,Diogo J.,Szoboszlai,0
-2023-10-27T10:11:27.418534Z,48,341,218961,10,22660577,,f,,a,11,341,8,1,Konsa,Akanji,-7
-2023-10-25T21:40:06.958565Z,131,377,230738,10,22253996,5.0,w,1.0,a,11,377,6,0,Estupiñan,Dalot,-6
-2023-10-27T05:04:40.975998Z,134,447,218961,10,22648056,,f,,a,11,447,3,2,Gross,Gibbs-White,-1
-2023-10-26T08:05:41.826291Z,210,501,249496,10,22360417,2.0,w,1.0,a,11,501,7,0,Mudryk,Kulusevski,-7
-2023-10-26T15:49:06.592482Z,677,140,218851,10,22535305,3.0,w,1.0,a,11,140,0,22,Doku,March,22
-2023-10-26T15:44:48.057006Z,228,405,219160,10,22532759,4.0,w,1.0,a,11,405,0,5,Guéhi,Botman,5
-2023-10-22T15:13:56.553844Z,77,28,229056,10,21683836,1.0,w,1.0,a,11,28,0,0,Neto,Turner,0
+team,waiver_gw,player_in,player_out,waiver_or_free,next_gw,player_in_pts,player_out_pts,net_pts
+Dandandania,10,Colwill,Mitchell,f,11,0,15,-15
+Dandandania,10,Konsa,Akanji,f,11,1,8,-7
+Lulli XI,10,Mudryk,Kulusevski,w,11,0,7,-7
+Walid Sb,10,Estupiñan,Dalot,w,11,0,6,-6
+Walid Sb,10,Nkunku,Ferguson,f,11,0,2,-2
+Dandandania,10,Gross,Gibbs-White,f,11,2,3,-1
+Dandandania,10,Diogo J.,Szoboszlai,f,11,3,3,0
+Masala Pan FC,10,Neto,Turner,w,11,0,0,0
+Lulla XI,10,Guéhi,Botman,w,11,5,0,5
+Bald is Best,10,Doku,March,w,11,22,0,22

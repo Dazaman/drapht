@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib
 
 
-@st.cache()
+# @st.cache()
 def main():
     # Read current gw, use as gw[0]
     with open(r"data_gw", "r") as fp:
@@ -30,24 +30,16 @@ def main():
 
     if gwbracket == "Bracket 1":
         gw_pts_df = pd.read_csv("data/results_1.csv")
-        c1.dataframe(
-            gw_pts_df.style.background_gradient(cmap="Greens"), hide_index=True
-        )
+        c1.dataframe(gw_pts_df.style.background_gradient(cmap="YlGn"), hide_index=True)
     elif gwbracket == "Bracket 2":
         gw_pts_df = pd.read_csv("data/results_2.csv")
-        c1.dataframe(
-            gw_pts_df.style.background_gradient(cmap="Greens"), hide_index=True
-        )
+        c1.dataframe(gw_pts_df.style.background_gradient(cmap="YlGn"), hide_index=True)
     elif gwbracket == "Bracket 3":
         gw_pts_df = pd.read_csv("data/results_3.csv")
-        c1.dataframe(
-            gw_pts_df.style.background_gradient(cmap="Greens"), hide_index=True
-        )
+        c1.dataframe(gw_pts_df.style.background_gradient(cmap="YlGn"), hide_index=True)
     elif gwbracket == "Bracket 4":
         gw_pts_df = pd.read_csv("data/results_4.csv")
-        c1.dataframe(
-            gw_pts_df.style.background_gradient(cmap="Greens"), hide_index=True
-        )
+        c1.dataframe(gw_pts_df.style.background_gradient(cmap="YlGn"), hide_index=True)
 
     standings_ts = pd.read_csv("data/standings_ts.csv")
     standings_ts["pos"] = standings_ts["pos"] * -1
@@ -58,7 +50,13 @@ def main():
 
     option = c3.selectbox("Blunders for which GW?", [i for i in range(1, 18)])
     blunders_df = pd.read_csv(f"data/blunders_{option}.csv")
-    c3.dataframe(blunders_df)
+    blunders_df_sorted = blunders_df.sort_values(by="net_pts", ascending=True)
+    c3.dataframe(
+        blunders_df_sorted.style.background_gradient(
+            cmap="coolwarm", subset=["net_pts"]
+        ),
+        hide_index=True,
+    )
 
 
 if __name__ == "__main__":

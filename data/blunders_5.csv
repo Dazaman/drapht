@@ -1,19 +1,19 @@
-added,element_in,element_out,entry,event,id,index,kind,priority,result,gw,id:1,out_pts,in_pts,element_in_name,element_out_name,diff
-2023-09-13T09:12:48.683250Z,613,101,230738,5,13076474,6.0,w,1.0,a,6,101,2,2,Kaminski,Flekken,0
-2023-09-15T09:50:17.432510Z,305,112,219160,5,13982935,5.0,w,1.0,a,6,112,1,2,Matip,Pinnock,1
-2023-09-11T23:43:20.329493Z,309,134,218961,5,12896873,2.0,w,1.0,a,6,134,0,2,Szoboszlai,Gross,2
-2023-09-04T01:45:17.673654Z,699,221,229056,5,11961738,1.0,w,1.0,a,6,221,2,1,Ansu Fati,J.Ayew,-1
-2023-09-15T06:53:42.350595Z,447,365,249496,5,13766460,10.0,w,2.0,a,6,365,-2,1,Gibbs-White,Rodrigo,3
-2023-09-15T03:43:40.861774Z,539,509,218851,5,13691016,13.0,w,4.0,a,6,509,1,3,L.Paquetá,Richarlison,2
-2023-09-11T23:43:20.329568Z,583,513,218961,5,12896875,9.0,w,3.0,a,6,513,1,1,Solomon,Sarr,0
-2023-09-15T06:53:42.350702Z,436,522,249496,5,13766464,23.0,w,6.0,a,6,522,1,0,Aurier,N.Aguerd,-1
-2023-09-15T19:33:53.569612Z,270,567,218961,5,14051042,,f,,a,6,567,9,3,De Cordova-Reid,Neto,-6
-2023-09-15T16:55:24.739046Z,439,436,249496,5,14043721,,f,,a,6,436,0,1,Boly,Aurier,1
-2023-09-15T06:53:42.350545Z,433,523,249496,5,13766459,3.0,w,1.0,a,6,523,2,6,Wilson,Antonio,4
-2023-09-15T03:43:40.861680Z,206,532,218851,5,13691013,4.0,w,1.0,a,6,532,1,0,James,Emerson,-1
-2023-09-11T23:43:20.329624Z,225,13,218961,5,12896878,19.0,w,6.0,a,6,13,1,2,Edouard,Nketiah,1
-2023-09-16T01:55:22.961851Z,115,354,218851,5,14062027,,f,,a,6,354,0,0,Schade,Grealish,0
-2023-09-11T23:43:20.329716Z,168,590,218961,5,12896882,32.0,w,10.0,a,6,590,2,0,Foster,Cunha,-2
-2023-09-04T01:45:17.673709Z,28,569,229056,5,11961739,7.0,w,2.0,a,6,569,3,1,Turner,José Sá,-2
-2023-09-11T23:43:20.329642Z,217,96,218961,5,12896879,27.0,w,7.0,a,6,96,1,2,T.Silva,Collins,1
-2023-09-15T06:53:42.350738Z,49,148,249496,5,13766466,29.0,w,8.0,a,6,148,0,6,Martinez,Steele,6
+team,waiver_gw,player_in,player_out,waiver_or_free,next_gw,player_in_pts,player_out_pts,net_pts
+Dandandania,5,De Cordova-Reid,Neto,f,6,3,9,-6
+Dandandania,5,Foster,Cunha,w,6,0,2,-2
+Masala Pan FC,5,Turner,José Sá,w,6,1,3,-2
+Masala Pan FC,5,Ansu Fati,J.Ayew,w,6,1,2,-1
+Lulli XI,5,Aurier,N.Aguerd,w,6,0,1,-1
+Bald is Best,5,James,Emerson,w,6,0,1,-1
+Walid Sb,5,Kaminski,Flekken,w,6,2,2,0
+Dandandania,5,Solomon,Sarr,w,6,1,1,0
+Bald is Best,5,Schade,Grealish,f,6,0,0,0
+Lulla XI,5,Matip,Pinnock,w,6,2,1,1
+Lulli XI,5,Boly,Aurier,f,6,1,0,1
+Dandandania,5,Edouard,Nketiah,w,6,2,1,1
+Dandandania,5,T.Silva,Collins,w,6,2,1,1
+Dandandania,5,Szoboszlai,Gross,w,6,2,0,2
+Bald is Best,5,L.Paquetá,Richarlison,w,6,3,1,2
+Lulli XI,5,Gibbs-White,Rodrigo,w,6,1,-2,3
+Lulli XI,5,Wilson,Antonio,w,6,6,2,4
+Lulli XI,5,Martinez,Steele,w,6,6,0,6

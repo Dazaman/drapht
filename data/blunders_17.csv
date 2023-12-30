@@ -1,20 +1,20 @@
-added,element_in,element_out,entry,event,id,index,kind,priority,result,gw,id:1,out_pts,in_pts,element_in_name,element_out_name,diff
-2023-12-09T21:35:42.010743Z,86,6,229056,17,29891979,1.0,w,1.0,a,18,6,1,2,Tavernier,Havertz,1
-2023-12-15T02:24:50.194018Z,595,114,229056,17,31557664,,f,,a,18,114,0,0,Kerkez,Roerslev,0
-2023-12-14T19:05:32.249749Z,177,119,218961,17,31534666,,f,,a,18,119,0,1,Rodriguez,Wissa,1
-2023-12-14T13:38:57.916504Z,354,143,249496,17,31222506,6.0,w,2.0,a,18,143,2,0,Grealish,Mitoma,-2
-2023-12-14T13:56:37.735182Z,48,206,218851,17,31233120,3.0,w,1.0,a,18,206,0,2,Konsa,James,2
-2023-12-15T12:48:21.153126Z,197,217,230738,17,31582834,,f,,a,18,217,1,2,Colwill,T.Silva,1
-2023-12-15T06:43:55.638316Z,660,236,230738,17,31563734,,f,,a,18,236,6,2,Harrison,Olise,-4
-2023-12-14T13:38:57.916431Z,433,258,249496,17,31222505,2.0,w,1.0,a,18,258,0,2,Wilson,Maupay,2
-2023-12-15T06:42:56.573155Z,217,368,230738,17,31563699,,f,,a,18,368,0,1,T.Silva,Stones,1
-2023-12-10T19:33:46.760540Z,122,382,230738,17,30157857,5.0,w,1.0,a,18,382,2,1,Adingra,Garnacho,-1
-2023-12-14T13:38:57.916544Z,249,447,249496,17,31222507,10.0,w,3.0,a,18,447,5,0,A.Doucoure,Gibbs-White,-5
-2023-12-15T12:48:49.107512Z,686,569,230738,17,31582885,,f,,a,18,569,3,2,Petrovic,José Sá,-1
-2023-12-14T17:12:12.190063Z,314,593,219160,17,31396822,12.0,w,6.0,a,18,593,2,2,Adebayo,Amdouni,0
-2023-12-14T17:12:12.189918Z,83,398,219160,17,31396817,4.0,w,1.0,a,18,398,0,5,Senesi,Shaw,5
-2023-12-14T19:00:56.264946Z,265,573,218961,17,31533983,,f,,a,18,573,2,1,Tarkowski,Toti,-1
-2023-12-14T17:12:12.190011Z,263,101,219160,17,31396820,9.0,w,4.0,a,18,101,0,2,Pickford,Flekken,2
-2023-12-14T13:38:57.916715Z,611,112,249496,17,31222511,17.0,w,7.0,a,18,112,0,2,Disasi,Pinnock,2
-2023-12-14T13:38:57.916678Z,49,148,249496,17,31222510,15.0,w,6.0,a,18,148,0,2,Martinez,Steele,2
-2023-12-15T02:27:07.293504Z,132,225,229056,17,31557722,,f,,a,18,225,0,0,Ferguson,Edouard,0
+team,waiver_gw,player_in,player_out,waiver_or_free,next_gw,player_in_pts,player_out_pts,net_pts
+Lulli XI,17,A.Doucoure,Gibbs-White,w,18,0,5,-5
+Walid Sb,17,Harrison,Olise,f,18,2,6,-4
+Lulli XI,17,Grealish,Mitoma,w,18,0,2,-2
+Walid Sb,17,Adingra,Garnacho,w,18,1,2,-1
+Walid Sb,17,Petrovic,José Sá,f,18,2,3,-1
+Dandandania,17,Tarkowski,Toti,f,18,1,2,-1
+Masala Pan FC,17,Kerkez,Roerslev,f,18,0,0,0
+Lulla XI,17,Adebayo,Amdouni,w,18,2,2,0
+Masala Pan FC,17,Ferguson,Edouard,f,18,0,0,0
+Masala Pan FC,17,Tavernier,Havertz,w,18,2,1,1
+Dandandania,17,Rodriguez,Wissa,f,18,1,0,1
+Walid Sb,17,Colwill,T.Silva,f,18,2,1,1
+Walid Sb,17,T.Silva,Stones,f,18,1,0,1
+Bald is Best,17,Konsa,James,w,18,2,0,2
+Lulli XI,17,Wilson,Maupay,w,18,2,0,2
+Lulla XI,17,Pickford,Flekken,w,18,2,0,2
+Lulli XI,17,Disasi,Pinnock,w,18,2,0,2
+Lulli XI,17,Martinez,Steele,w,18,2,0,2
+Lulla XI,17,Senesi,Shaw,w,18,5,0,5

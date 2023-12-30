@@ -1,18 +1,18 @@
-added,element_in,element_out,entry,event,id,index,kind,priority,result,gw,id:1,out_pts,in_pts,element_in_name,element_out_name,diff
-2023-08-24T15:33:23.587252Z,638,5,229056,3,8060550,9.0,w,3.0,a,4,5,2,1,Van de Ven,Gabriel,-1
-2023-08-25T01:28:04.015057Z,567,6,218961,3,8292290,,f,,a,4,6,2,10,Neto,Havertz,8
-2023-08-24T16:48:07.564693Z,497,31,249496,3,8155123,19.0,w,4.0,a,4,31,2,1,E.Royal,Zinchenko,-1
-2023-08-24T15:33:23.587211Z,50,43,229056,3,8060549,3.0,w,2.0,a,4,43,2,2,McGinn,Douglas Luiz,0
-2023-08-23T16:22:50.629863Z,511,129,219160,3,7335710,6.0,w,1.0,a,4,129,2,7,Romero,Dunk,5
-2023-08-25T16:01:50.709093Z,82,132,229056,3,8350809,,f,,a,4,132,17,1,Semenyo,Ferguson,-16
-2023-08-24T11:26:15.337706Z,663,134,218961,3,7824992,23.0,w,5.0,a,4,134,3,7,Ward-Prowse,Gross,4
-2023-08-24T16:48:07.564651Z,520,230,249496,3,8155121,8.0,w,2.0,a,4,230,1,2,Vicario,Johnstone,1
-2023-08-24T11:26:15.337645Z,34,304,218961,3,7824989,11.0,w,2.0,a,4,304,3,1,Bailey,Mac Allister,-2
-2023-08-24T17:29:17.209116Z,519,342,230738,3,8245162,7.0,w,1.0,a,4,342,8,5,Udogie,Aké,-3
-2023-08-24T21:55:20.811006Z,506,398,218961,3,8280792,,f,,a,4,398,0,4,Pedro Porro,Shaw,4
-2023-08-24T15:33:23.587290Z,570,429,229056,3,8060551,20.0,w,4.0,a,4,429,1,1,Sarabia,Tonali,0
-2023-08-24T16:48:07.564605Z,523,433,249496,3,8155120,1.0,w,1.0,a,4,433,6,2,Antonio,Wilson,-4
-2023-08-24T11:26:15.337591Z,590,293,218961,3,7824988,5.0,w,1.0,a,4,293,8,6,Cunha,Darwin,-2
-2023-08-24T15:09:11.286908Z,377,584,218851,3,8030544,4.0,w,1.0,a,4,584,1,1,Dalot,Pau,0
-2023-08-23T16:22:50.629962Z,42,401,219160,3,7335713,14.0,w,4.0,a,4,401,1,1,Digne,Wan-Bissaka,0
-2023-08-25T01:25:27.228775Z,493,603,218961,3,8292208,,f,,a,4,603,1,2,Bissouma,Barnes,1
+team,waiver_gw,player_in,player_out,waiver_or_free,next_gw,player_in_pts,player_out_pts,net_pts
+Masala Pan FC,3,Semenyo,Ferguson,f,4,1,17,-16
+Lulli XI,3,Antonio,Wilson,w,4,2,6,-4
+Walid Sb,3,Udogie,Aké,w,4,5,8,-3
+Dandandania,3,Bailey,Mac Allister,w,4,1,3,-2
+Dandandania,3,Cunha,Darwin,w,4,6,8,-2
+Masala Pan FC,3,Van de Ven,Gabriel,w,4,1,2,-1
+Lulli XI,3,E.Royal,Zinchenko,w,4,1,2,-1
+Masala Pan FC,3,McGinn,Douglas Luiz,w,4,2,2,0
+Masala Pan FC,3,Sarabia,Tonali,w,4,1,1,0
+Bald is Best,3,Dalot,Pau,w,4,1,1,0
+Lulla XI,3,Digne,Wan-Bissaka,w,4,1,1,0
+Lulli XI,3,Vicario,Johnstone,w,4,2,1,1
+Dandandania,3,Bissouma,Barnes,f,4,2,1,1
+Dandandania,3,Ward-Prowse,Gross,w,4,7,3,4
+Dandandania,3,Pedro Porro,Shaw,f,4,4,0,4
+Lulla XI,3,Romero,Dunk,w,4,7,2,5
+Dandandania,3,Neto,Havertz,f,4,10,2,8
