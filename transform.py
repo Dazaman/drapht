@@ -134,16 +134,16 @@ def calculate_points_bracket(con, bracket) -> pd.DataFrame:
         GROUP BY 1
     )
     SELECT 
-        CONCAT('GW',{brackets[bracket][0]},' - ', 'GW',{brackets[bracket][1]}) as gw_bracket,
         b.entry_name AS team_name,
         CONCAT(b.player_first_name,' ', b.player_last_name) AS full_name,
         a.points AS points,
     FROM pts_table a
     LEFT JOIN league_entry b
     ON a.team_id = b.entry_id
-    ORDER BY 4 desc      
+    ORDER BY 3 desc      
 
     """
+    # CONCAT('GW',{brackets[bracket][0]},' - ', 'GW',{brackets[bracket][1]}) as gw_bracket,
     results = con.sql(sql).df()
     results.to_csv(f"data/results_{bracket}.csv", index=False)
 
@@ -245,18 +245,38 @@ def calculate_blunders(con, gw):
             gw - 1 AS prev_week
         FROM main.gw_live
     ),
+    players as (
+        SELECT *
+        FROM main.static
+    ),
     merged as (
         SELECT 
             tr.*, 
-            gwl.gw, 
-            gwl.id,
-            gwl.total_points,
+            gwl_out.gw, 
+            gwl_out.id,
+            gwl_out.total_points as out_pts,
+            gwl_in.total_points as in_pts,
         FROM transactions_c tr
-        LEFT JOIN gwl 
-        ON tr.event = gwl.prev_week
-        AND tr.element_out = gwl.id
+        LEFT JOIN gwl gwl_out 
+        ON tr.event = gwl_out.prev_week
+        AND tr.element_out = gwl_out.id
+        LEFT JOIN gwl gwl_in 
+        ON tr.event = gwl_in.prev_week
+        AND tr.element_in = gwl_in.id
+    ),
+    details as (
+        SELECT 
+            m.*,
+            pi.web_name element_in_name,
+            po.web_name element_out_name,
+            in_pts - out_pts as diff
+        FROM merged m
+        LEFT JOIN players pi
+        ON m.element_in = pi.id
+        LEFT JOIN players po
+        ON m.element_out = po.id
     )
-    SELECT * FROM merged
+    SELECT * FROM details
     """
     blunders = con.sql(sql).df()
     blunders.to_csv(f"data/blunders_{gw}.csv", index=False)
