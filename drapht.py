@@ -124,8 +124,8 @@ def main():
     c3.header("Transfers!")
     blunders, smart_moves, transactions_gw = c3.tabs(
         [
-            "Top Blunders - Should have held",
-            "Top Transfers - Timely pick!",
+            "Top Blunders",
+            "Top Transfers",
             "Transactions by GW",
         ]
     )
@@ -185,7 +185,7 @@ def main():
     c1.line_chart(standings_ts, x="Gameweek", y="Position", color="Name")
 
     with blunders:
-        st.subheader("Top 10 Blunders")
+        st.subheader("Top 10 Blunders - Should have held on!")
         st.dataframe(
             bottom_n.style.background_gradient(cmap="YlOrRd_r", subset=["Net Points"]),
             hide_index=True,
@@ -193,7 +193,7 @@ def main():
         )
 
     with smart_moves:
-        st.subheader("Top 10 Smart Transfers")
+        st.subheader("Top 10 Smart Transfers - Timely pick!")
         st.dataframe(
             top_n.style.background_gradient(cmap="YlGn", subset=["Net Points"]),
             hide_index=True,
@@ -201,7 +201,7 @@ def main():
         )
 
     with transactions_gw:
-        st.subheader("Transactions by GW")
+        st.subheader("Ranked Transactions by GW")
 
         option = st.selectbox(
             "Blunders for which GW?", [i for i in range(1, int(gw) + 1)]
