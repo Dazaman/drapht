@@ -30,10 +30,13 @@ def load_current_gw_teams():
 def load_bracket_dfs():
     bracket_1 = pd.read_csv("data/results_1.csv")
     bracket_1["points"] = bracket_1["points"].astype(int)
+
     bracket_2 = pd.read_csv("data/results_2.csv")
     bracket_2["points"] = bracket_2["points"].astype(int)
+
     bracket_3 = pd.read_csv("data/results_3.csv")
     bracket_3["points"] = bracket_3["points"].astype(int)
+
     bracket_4 = pd.read_csv("data/results_4.csv")
     bracket_4["points"] = bracket_4["points"].astype(int)
 
@@ -57,27 +60,16 @@ def standings():
     return standings_ts, cumm_points
 
 
-def transactions():
-    col_names = {
-        "team": "Team Name",
-        "waiver_or_free": "Waiver/Free Agent",
-        "waiver_gw": "Transfer GW",
-        "next_gw": "Next GW",
-        "player_in": "IN",
-        "player_in_pts": "IN Points",
-        "player_out": "OUT",
-        "player_out_pts": "OUT Points",
-        "net_pts": "Net Points",
-    }
-
+def transactions(col_names, int_cols):
     top_n = pd.read_csv("data/top_df.csv")
-    # top_n = top_n.drop("Unnamed: 0", axis=1)
-
     bottom_n = pd.read_csv("data/bottom_df.csv")
-    # bottom_n = bottom_n.drop("Unnamed: 0", axis=1)
 
     top_n = top_n.rename(columns=col_names)
     bottom_n = bottom_n.rename(columns=col_names)
+
+    top_n[int_cols] = top_n[int_cols].map(int)
+    bottom_n[int_cols] = bottom_n[int_cols].map(int)
+
     return top_n, bottom_n
 
 
@@ -88,10 +80,42 @@ def main():
     gw, teams = load_current_gw_teams()
     (bracket_1, bracket_2, bracket_3, bracket_4) = load_bracket_dfs()
     standings_ts, cumm_points = standings()
-    top_n, bottom_n = transactions()
 
+    col_names = {
+        "team": "Team Name",
+        "waiver_or_free": "Type",
+        "waiver_gw": "Transfer GW",
+        "next_gw": "Next GW",
+        "player_in": "IN",
+        "player_in_pts": "IN Pts",
+        "player_out": "OUT",
+        "player_out_pts": "OUT Pts",
+        "net_pts": "Net Points",
+    }
+
+    int_cols = ["Transfer GW", "Next GW", "IN Pts", "OUT Pts", "Net Points"]
+
+    top_n, bottom_n = transactions(col_names, int_cols)
+
+    col1, col2, col3 = st.sidebar.columns([1, 8, 1])
+
+    with col1:
+        st.write("")
+    with col2:
+        st.image("img/fpl.jpeg", use_column_width=True)
+    with col3:
+        st.write("")
+
+    st.sidebar.markdown(" ## FPL Draft League")
+    st.sidebar.markdown(
+        "Some basic visualisations from 23/24 season. Aim of it is to analyze why I am so bad at waivers."
+    )
+    st.sidebar.info(
+        "Feel free to fork this repo from [Github](https://github.com/Dazaman/drapht).",
+        icon="ℹ️",
+    )
     # Space out the maps so the first one is 2x the size of the other three
-    c1, c2, c3 = st.columns((1, 0.2, 2))
+    c1, c2, c3 = st.columns((0.7, 0.2, 1))
 
     c3.header("Transfers!")
     blunders, smart_moves, transactions_gw = c3.tabs(
@@ -100,14 +124,19 @@ def main():
 
     gwbracket = c1.radio(
         "Choose GW Bracket to look at points for that bracket",
-        ["Bracket 1", "Bracket 2", "Bracket 3"],
-        captions=["GW 1 - 10", "GW 11 - 20", "GW 21 - 29"],
+        ["Bracket 1", "Bracket 2", "Bracket 3", "Bracket 4"],
+        captions=["GW 1 - 10", "GW 11 - 20", "GW 21 - 29", "GW 30 - 38"],
         horizontal=True,
     )
 
     if gwbracket == "Bracket 1":
         c1.dataframe(
             bracket_1.style.background_gradient(cmap="YlGn"),
+            column_config={
+                "img": st.column_config.ImageColumn(
+                    "Preview Image", help="Streamlit app preview screenshots"
+                )
+            },
             hide_index=True,
             use_container_width=True,
         )
@@ -129,7 +158,7 @@ def main():
             hide_index=True,
             use_container_width=True,
         )
-    c1.caption("** Ignore the minus sign lol, will fix it later")
+    c1.caption("** Ignore minus sign, will fix later")
     c1.line_chart(standings_ts, x="Gameweek", y="Position", color="Name")
     # c1.line_chart(cumm_points, x="gw", y="points", color="name")
 
@@ -138,7 +167,7 @@ def main():
         st.dataframe(
             bottom_n.style.background_gradient(cmap="YlOrRd_r", subset=["Net Points"]),
             hide_index=True,
-            use_container_width=True,
+            # use_container_width=True,
         )
 
     with smart_moves:
@@ -146,34 +175,26 @@ def main():
         st.dataframe(
             top_n.style.background_gradient(cmap="YlGn", subset=["Net Points"]),
             hide_index=True,
-            use_container_width=True,
+            # use_container_width=True,
         )
 
     with transactions_gw:
         st.subheader("Transactions by GW")
 
-        option = st.selectbox("Blunders for which GW?", [i for i in range(1, 18)])
-        col_names = {
-            "team": "Team Name",
-            "waiver_or_free": "Waiver/Free Agent",
-            "waiver_gw": "Transfer GW",
-            "next_gw": "Next GW",
-            "player_in": "IN",
-            "player_in_pts": "IN Points",
-            "player_out": "OUT",
-            "player_out_pts": "OUT Points",
-            "net_pts": "Net Points",
-        }
+        option = st.selectbox(
+            "Blunders for which GW?", [i for i in range(1, int(gw) + 1)]
+        )
         blunders_df = pd.read_csv(f"data/blunders_{option}.csv")
         blunders_df_sorted = blunders_df.sort_values(by="net_pts", ascending=True)
         blunders_df_sorted = blunders_df_sorted.rename(columns=col_names)
 
+        blunders_df_sorted[int_cols] = blunders_df_sorted[int_cols].map(int)
         st.dataframe(
             blunders_df_sorted.style.background_gradient(
                 cmap="coolwarm", subset=["Net Points"]
             ),
             hide_index=True,
-            use_container_width=True,
+            # use_container_width=True,
         )
 
 

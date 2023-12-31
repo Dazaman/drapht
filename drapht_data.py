@@ -25,29 +25,29 @@ import pandas as pd
 import matplotlib
 
 
-def get_data(con, email_address, league_code):
-    static_files = get_static_data(email_address=email_address)
-    league_files = get_league_data(email_address=email_address, league_code=league_code)
+def get_data(con, league_code):
+    static_files = get_static_data()
+    league_files = get_league_data(league_code=league_code)
 
     entries, gw = transform_details(con)
-    gw = list(range(1, gw[0]))
+    gw = list(range(1, gw[0] + 1))
     print("entries", entries)
     print("max gw ", gw)
 
     for team in entries:
-        get_team_data(email_address=email_address, team_id=team)
+        get_team_data(team_id=team)
         for week in gw:
-            get_gw_team_data(email_address=email_address, team_id=team, gw=week)
+            get_gw_team_data(team_id=team, gw=week)
 
     for week in gw:
-        get_gw_data(email_address=email_address, gw=week)
+        get_gw_data(gw=week)
 
 
 def transform_load_data(
     con,
 ):
     entries, gw = transform_details(con)
-    gw = list(range(1, gw[0] - 1))
+    gw = list(range(1, gw[0] + 1))
 
     load_team_points(con=con)
     concat_team_points(con=con)
@@ -68,7 +68,7 @@ def main():
         "4": ("30", "38"),
     }
 
-    refresh = False
+    refresh = True
     transform = True
     load = True
 

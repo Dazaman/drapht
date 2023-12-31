@@ -67,48 +67,48 @@ def load_team_points(con):
 def concat_team_points(con):
     joined = con.sql(
         """
-                     SELECT
-                        entry as team_id,
-                        event as gw,
-                        points as points,
-                        total_points as total_points,
-                     FROM team_249496
-                     UNION ALL
-                     SELECT
-                        entry as team_id,
-                        event as gw,
-                        points as points,
-                        total_points as total_points,
-                     FROM team_230738
-                     UNION ALL
-                     SELECT
-                        entry as team_id,
-                        event as gw,
-                        points as points,
-                        total_points as total_points,
-                     FROM team_229056
-                     UNION ALL
-                     SELECT
-                        entry as team_id,
-                        event as gw,
-                        points as points,
-                        total_points as total_points,
-                     FROM team_219160
-                     UNION ALL
-                     SELECT
-                        entry as team_id,
-                        event as gw,
-                        points as points,
-                        total_points as total_points,
-                     FROM team_218961
-                     UNION ALL
-                     SELECT
-                        entry as team_id,
-                        event as gw,
-                        points as points,
-                        total_points as total_points,
-                     FROM team_218851
-                     """
+            SELECT
+            entry as team_id,
+            event as gw,
+            points as points,
+            total_points as total_points,
+            FROM team_249496
+            UNION ALL
+            SELECT
+            entry as team_id,
+            event as gw,
+            points as points,
+            total_points as total_points,
+            FROM team_230738
+            UNION ALL
+            SELECT
+            entry as team_id,
+            event as gw,
+            points as points,
+            total_points as total_points,
+            FROM team_229056
+            UNION ALL
+            SELECT
+            entry as team_id,
+            event as gw,
+            points as points,
+            total_points as total_points,
+            FROM team_219160
+            UNION ALL
+            SELECT
+            entry as team_id,
+            event as gw,
+            points as points,
+            total_points as total_points,
+            FROM team_218961
+            UNION ALL
+            SELECT
+            entry as team_id,
+            event as gw,
+            points as points,
+            total_points as total_points,
+            FROM team_218851
+        """
     ).df()
 
     joined.to_csv("data/joined.csv", index=False)
@@ -133,7 +133,8 @@ def calculate_points_bracket(con, brackets, bracket) -> pd.DataFrame:
         FROM gw
         GROUP BY 1
     )
-    SELECT 
+    SELECT
+        CONCAT('img/',b.short_name, '.png') AS img,
         b.entry_name AS team_name,
         CONCAT(b.player_first_name,' ', b.player_last_name) AS full_name,
         a.points AS points,
@@ -146,8 +147,6 @@ def calculate_points_bracket(con, brackets, bracket) -> pd.DataFrame:
     # CONCAT('GW',{brackets[bracket][0]},' - ', 'GW',{brackets[bracket][1]}) as gw_bracket,
     results = con.sql(sql).df()
     results.to_csv(f"data/results_{bracket}.csv", index=False)
-
-    # return results
 
 
 def load_gw_live(con):
@@ -215,7 +214,7 @@ def calc_cumm_points(con):
         FROM drapht.main.total_points
     )
     SELECT 
-        CONCAT(b.player_first_name,' ', b.player_last_name) AS name,
+        b.player_first_name AS name,
         a.gw AS gw,
         a.total_points AS points,
     FROM points a
