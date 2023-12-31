@@ -101,7 +101,7 @@ def main():
 
     top_n, bottom_n = transactions(col_names, int_cols)
 
-    col1, col2, col3 = st.sidebar.columns([1, 8, 1])
+    col1, col2, col3 = st.sidebar.columns([2, 4, 2])
 
     with col1:
         st.write("")
@@ -119,7 +119,7 @@ def main():
         icon="ℹ️",
     )
     # Space out the maps so the first one is 2x the size of the other three
-    c1, c2, c3 = st.columns((0.7, 0.05, 1))
+    c1, c2, c3 = st.columns((0.8, 0.05, 1.2))
 
     c3.header("Transfers!")
     blunders, smart_moves, transactions_gw = c3.tabs(
