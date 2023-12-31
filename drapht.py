@@ -30,15 +30,19 @@ def load_current_gw_teams():
 def load_bracket_dfs():
     bracket_1 = pd.read_csv("data/results_1.csv")
     bracket_1["points"] = bracket_1["points"].astype(int)
+    bracket_1 = bracket_1.sort_values(by="points", ascending=False)
 
     bracket_2 = pd.read_csv("data/results_2.csv")
     bracket_2["points"] = bracket_2["points"].astype(int)
+    bracket_2 = bracket_2.sort_values(by="points", ascending=False)
 
     bracket_3 = pd.read_csv("data/results_3.csv")
     bracket_3["points"] = bracket_3["points"].astype(int)
+    bracket_3 = bracket_3.sort_values(by="points", ascending=False)
 
     bracket_4 = pd.read_csv("data/results_4.csv")
     bracket_4["points"] = bracket_4["points"].astype(int)
+    bracket_4 = bracket_4.sort_values(by="points", ascending=False)
 
     return bracket_1, bracket_2, bracket_3, bracket_4
 
@@ -115,7 +119,7 @@ def main():
         icon="ℹ️",
     )
     # Space out the maps so the first one is 2x the size of the other three
-    c1, c2, c3 = st.columns((0.7, 0.2, 1))
+    c1, c2, c3 = st.columns((0.7, 0.05, 1))
 
     c3.header("Transfers!")
     blunders, smart_moves, transactions_gw = c3.tabs(
@@ -134,7 +138,7 @@ def main():
             bracket_1.style.background_gradient(cmap="YlGn"),
             column_config={
                 "img": st.column_config.ImageColumn(
-                    "Preview Image", help="Streamlit app preview screenshots"
+                    "DP", help="Streamlit app preview screenshots"
                 )
             },
             hide_index=True,
@@ -143,24 +147,38 @@ def main():
     elif gwbracket == "Bracket 2":
         c1.dataframe(
             bracket_2.style.background_gradient(cmap="YlGn"),
+            column_config={
+                "img": st.column_config.ImageColumn(
+                    "DP", help="Streamlit app preview screenshots"
+                )
+            },
             hide_index=True,
             use_container_width=True,
         )
     elif gwbracket == "Bracket 3":
         c1.dataframe(
             bracket_3.style.background_gradient(cmap="YlGn"),
+            column_config={
+                "img": st.column_config.ImageColumn(
+                    "DP", help="Streamlit app preview screenshots"
+                )
+            },
             hide_index=True,
             use_container_width=True,
         )
     elif gwbracket == "Bracket 4":
         c1.dataframe(
             bracket_4.style.background_gradient(cmap="YlGn"),
+            column_config={
+                "img": st.column_config.ImageColumn(
+                    "DP", help="Streamlit app preview screenshots"
+                )
+            },
             hide_index=True,
             use_container_width=True,
         )
     c1.caption("** Ignore minus sign, will fix later")
     c1.line_chart(standings_ts, x="Gameweek", y="Position", color="Name")
-    # c1.line_chart(cumm_points, x="gw", y="points", color="name")
 
     with blunders:
         st.subheader("Top 10 Blunders")

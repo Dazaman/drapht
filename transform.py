@@ -134,7 +134,7 @@ def calculate_points_bracket(con, brackets, bracket) -> pd.DataFrame:
         GROUP BY 1
     )
     SELECT
-        CONCAT('img/',b.short_name, '.png') AS img,
+        CONCAT('app/static/',b.short_name, '.png') AS img,
         b.entry_name AS team_name,
         CONCAT(b.player_first_name,' ', b.player_last_name) AS full_name,
         a.points AS points,
@@ -190,7 +190,7 @@ def calc_running_standings(con):
         FROM drapht.main.total_points
     )
     SELECT 
-        CONCAT(b.player_first_name,' ', b.player_last_name) AS name, 
+        b.player_first_name AS name,
         a.gw,
         RANK() OVER (PARTITION BY a.gw order by a.total_points DESC) as pos
     FROM points a
