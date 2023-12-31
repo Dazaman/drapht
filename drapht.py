@@ -8,7 +8,7 @@ import matplotlib
 st.set_page_config(
     page_title="FPL Draft",
     page_icon="⚽",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
     layout="wide",
 )
 
