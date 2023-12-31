@@ -189,7 +189,7 @@ def main():
         st.dataframe(
             bottom_n.style.background_gradient(cmap="YlOrRd_r", subset=["Net Points"]),
             hide_index=True,
-            # use_container_width=True,
+            use_container_width=True,
         )
 
     with smart_moves:
@@ -197,7 +197,7 @@ def main():
         st.dataframe(
             top_n.style.background_gradient(cmap="YlGn", subset=["Net Points"]),
             hide_index=True,
-            # use_container_width=True,
+            use_container_width=True,
         )
 
     with transactions_gw:
@@ -216,7 +216,7 @@ def main():
                 cmap="coolwarm", subset=["Net Points"]
             ),
             hide_index=True,
-            # use_container_width=True,
+            use_container_width=True,
         )
 
 
