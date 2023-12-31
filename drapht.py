@@ -123,7 +123,11 @@ def main():
 
     c3.header("Transfers!")
     blunders, smart_moves, transactions_gw = c3.tabs(
-        ["Top Blunders", "Top Transfers", "Transactions by GW"]
+        [
+            "Top Blunders - Should have held",
+            "Top Transfers - Timely pick!",
+            "Transactions by GW",
+        ]
     )
 
     gwbracket = c1.radio(
