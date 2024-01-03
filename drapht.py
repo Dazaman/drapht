@@ -71,8 +71,8 @@ def transactions(col_names, int_cols):
     top_n = top_n.rename(columns=col_names)
     bottom_n = bottom_n.rename(columns=col_names)
 
-    top_n[int_cols] = top_n[int_cols].map(int)
-    bottom_n[int_cols] = bottom_n[int_cols].map(int)
+    top_n[int_cols] = top_n[int_cols].astype(int)
+    bottom_n[int_cols] = bottom_n[int_cols].astype(int)
 
     return top_n, bottom_n
 
@@ -211,7 +211,7 @@ def main():
         blunders_df_sorted = blunders_df.sort_values(by="net_pts", ascending=True)
         blunders_df_sorted = blunders_df_sorted.rename(columns=col_names)
 
-        blunders_df_sorted[int_cols] = blunders_df_sorted[int_cols].map(int)
+        blunders_df_sorted[int_cols] = blunders_df_sorted[int_cols].astype(int)
         st.dataframe(
             blunders_df_sorted.style.background_gradient(
                 cmap="coolwarm", subset=["Net Points"]
