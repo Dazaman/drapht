@@ -10,6 +10,7 @@ from transform import (
     transform_details,
     load_team_points,
     load_gw_live,
+    load_gw_event,
     load_transactions,
     concat_team_points,
     calculate_points_bracket,
@@ -53,6 +54,7 @@ def transform_load_data(
     concat_team_points(con=con)
     load_gw_live(con=con)
     load_transactions(con=con)
+    load_gw_event(con=con, teams=entries)
 
     for i in gw:
         calculate_blunders(con=con, gw=i)

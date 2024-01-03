@@ -174,6 +174,29 @@ def load_gw_live(con):
     )
 
 
+def load_gw_event(con, teams):
+    df_list = []
+
+    for team_id in teams:
+        for file in os.listdir(f"data/team_{team_id}/."):
+            if file.endswith("event.json"):
+                with open(f"data/team_{team_id}/{file}") as json_data:
+                    data = json.load(json_data)
+                    picks = pd.json_normalize(data["picks"])
+                    picks = picks.assign(gw=file.split(".")[0].split("_")[0])
+                    picks = picks.assign(team_id=team_id)
+                    picks = picks.drop(
+                        ["is_captain", "is_vice_captain", "multiplier"], axis=1
+                    )
+                    df_list.append(picks)
+
+    gw_live = pd.concat(df_list)
+    gw_live.to_csv("data/gw_event.csv", index=False)
+    con.sql(
+        f"CREATE TABLE IF NOT EXISTS gw_event AS FROM read_csv('data/gw_event.csv', auto_detect = TRUE);"
+    )
+
+
 def load_transactions(con):
     with open("data/transactions.json") as json_data:
         d = json.load(json_data)

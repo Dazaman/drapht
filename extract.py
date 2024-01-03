@@ -92,7 +92,6 @@ def get_team_data(team_id):
         f"https://draft.premierleague.com/api/entry/{team_id}/public",
         f"https://draft.premierleague.com/api/entry/{team_id}/history",
         f"https://draft.premierleague.com/api/entry/{team_id}/my-team",
-        # f"https://draft.premierleague.com/api/entry/{team_id}/transactions",
         f"https://draft.premierleague.com/api/watchlist/{team_id}",
     ]
     if os.path.exists(f"data/team_{team_id}"):
@@ -103,7 +102,6 @@ def get_team_data(team_id):
         f"data/team_{team_id}/public.json",
         f"data/team_{team_id}/history.json",
         f"data/team_{team_id}/my_team.json",
-        # f"data/team_{team_id}/transactions.json",
         f"data/team_{team_id}/watchlist.json",
     ]
 
