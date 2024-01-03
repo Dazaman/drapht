@@ -13,7 +13,7 @@ st.set_page_config(
 )
 
 
-@st.cache_data
+# @st.cache_data
 def load_current_gw_teams():
     # Read current gw, use as gw[0]
     with open(r"data_gw", "r") as fp:
@@ -26,7 +26,7 @@ def load_current_gw_teams():
     return gw[0], teams
 
 
-@st.cache_data
+# @st.cache_data
 def load_bracket_dfs():
     bracket_1 = pd.read_csv("data/results_1.csv")
     bracket_1["points"] = bracket_1["points"].astype(int)
@@ -47,7 +47,7 @@ def load_bracket_dfs():
     return bracket_1, bracket_2, bracket_3, bracket_4
 
 
-@st.cache_data
+# @st.cache_data
 def standings():
     col_names = {
         "gw": "Gameweek",
