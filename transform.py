@@ -446,20 +446,21 @@ def calc_bench_pts(con):
     ),
     grouped as (
         SELECT 
-            team_id, 
+            team_id,
+            player_type,
             sum(diff) as pts_lost
         FROM final
         WHERE diff < 0
-        GROUP BY 1
+        GROUP BY 1,2
     )
     SELECT 
         b.player_first_name as name,
-    --	g.player_type,
+        g.player_type,
         g.pts_lost,
     FROM grouped g
     LEFT JOIN league_entry b
     ON g.team_id = b.entry_id
-    ORDER BY pts_lost;
+    ORDER BY name, pts_lost;
     """
 
     bench_pts = con.sql(sql).df()

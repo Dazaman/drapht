@@ -120,7 +120,7 @@ def main():
 
     st.sidebar.markdown(" ## FPL Draft League")
     st.sidebar.markdown(
-        "Some basic visualisations from 23/24 season. Aim of it is to analyze why I am so bad at waivers."
+        "Some basic visualisations from our FPL Draft 23/24 season. Aim of it is to analyze why I am so bad at this..."
     )
     st.sidebar.info(
         "Feel free to fork this repo from [Github](https://github.com/Dazaman/drapht).",
@@ -198,13 +198,26 @@ def main():
     c1.caption(
         "Current Method of Calculation is to compare MIN pts/position of starting 11 (GK, DEF, MID, FWD) vs MAX pts/position on bench. Then Points are added up over the current elapsed GW's"
     )
-    c1.dataframe(
-        total_bench_pts.style.background_gradient(
-            cmap="YlOrRd_r", subset=["bench_pts"]
-        ),
-        hide_index=True,
-        use_container_width=True,
+    bench_pts_, total_bench_pts_ = c1.tabs(
+        [
+            "Points on Bench by Position",
+            "Total Bench Points",
+        ]
     )
+    with bench_pts_:
+        st.dataframe(
+            bench_pts.style.background_gradient(cmap="YlOrRd_r", subset=["pts_lost"]),
+            hide_index=True,
+            use_container_width=True,
+        )
+    with total_bench_pts_:
+        st.dataframe(
+            total_bench_pts.style.background_gradient(
+                cmap="YlOrRd_r", subset=["bench_pts"]
+            ),
+            hide_index=True,
+            use_container_width=True,
+        )
 
     with blunders:
         st.subheader("Top 10 Blunders - Should have held on!")
