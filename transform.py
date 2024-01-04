@@ -445,14 +445,17 @@ def calc_bench_pts(con):
         subs.team_id
     ),
     grouped as (
-        SELECT team_id, player_type, sum(diff) as pts_lost
+        SELECT 
+            team_id, 
+            sum(diff) as pts_lost
         FROM final
         WHERE diff < 0
-        GROUP BY 1,2
+        GROUP BY 1
     )
     SELECT 
-        g.*,
-        b.player_first_name as name
+        b.player_first_name as name,
+    --	g.player_type,
+        g.pts_lost,
     FROM grouped g
     LEFT JOIN league_entry b
     ON g.team_id = b.entry_id
