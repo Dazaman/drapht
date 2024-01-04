@@ -64,6 +64,13 @@ def standings():
     return standings_ts, cumm_points
 
 
+def bench():
+    bench_pts = pd.read_csv("data/bench_pts.csv")
+    total_bench_pts = pd.read_csv("data/total_bench_pts.csv")
+
+    return bench_pts, total_bench_pts
+
+
 def transactions(col_names, int_cols):
     top_n = pd.read_csv("data/top_df.csv")
     bottom_n = pd.read_csv("data/bottom_df.csv")
@@ -84,6 +91,7 @@ def main():
     gw, teams = load_current_gw_teams()
     (bracket_1, bracket_2, bracket_3, bracket_4) = load_bracket_dfs()
     standings_ts, cumm_points = standings()
+    bench_pts, total_bench_pts = bench()
 
     col_names = {
         "team": "Team Name",
@@ -119,9 +127,12 @@ def main():
         icon="ℹ️",
     )
     # Space out the maps so the first one is 2x the size of the other three
-    c1, c2, c3 = st.columns((0.8, 0.05, 1.2))
+    c1, c2, c3 = st.columns((0.7, 0.05, 1.3))
 
     c3.header("Transfers!")
+    c3.caption(
+        "** Currently does not take into account whether Transferred in player was on the bench or not."
+    )
     blunders, smart_moves, transactions_gw = c3.tabs(
         [
             "Top Blunders",
@@ -182,8 +193,18 @@ def main():
             hide_index=True,
             use_container_width=True,
         )
-    c1.caption("** Ignore minus sign, will fix later")
-    c1.line_chart(standings_ts, x="Gameweek", y="Position", color="Name")
+
+    c1.header("Points lost on Bench")
+    c1.caption(
+        "Current Method of Calculation is to compare MIN pts/position of starting 11 (GK, DEF, MID, FWD) vs MAX pts/position on bench. Then Points are added up over the current elapsed GW's"
+    )
+    c1.dataframe(
+        total_bench_pts.style.background_gradient(
+            cmap="YlOrRd_r", subset=["bench_pts"]
+        ),
+        hide_index=True,
+        use_container_width=True,
+    )
 
     with blunders:
         st.subheader("Top 10 Blunders - Should have held on!")
@@ -219,6 +240,10 @@ def main():
             hide_index=True,
             use_container_width=True,
         )
+
+    c3.header("Timeline")
+    c3.caption("** Ignore minus sign, will fix later")
+    c3.line_chart(standings_ts, x="Gameweek", y="Position", color="Name")
 
 
 if __name__ == "__main__":

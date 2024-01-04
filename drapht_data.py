@@ -13,11 +13,12 @@ from transform import (
     load_gw_event,
     load_transactions,
     concat_team_points,
-    calculate_points_bracket,
+    calc_points_bracket,
     calc_running_standings,
     calc_cumm_points,
-    calculate_blunders,
+    calc_blunders,
     top_n_transfers,
+    calc_bench_pts,
 )
 import duckdb
 import os
@@ -55,9 +56,10 @@ def transform_load_data(
     load_gw_live(con=con)
     load_transactions(con=con)
     load_gw_event(con=con, teams=entries)
+    calc_bench_pts(con=con)
 
     for i in gw:
-        calculate_blunders(con=con, gw=i)
+        calc_blunders(con=con, gw=i)
 
 
 def main():
@@ -86,7 +88,7 @@ def main():
         transform_load_data(con=con)
     if load:
         for i in brackets.keys():
-            calculate_points_bracket(con=con, brackets=brackets, bracket=i)
+            calc_points_bracket(con=con, brackets=brackets, bracket=i)
         calc_running_standings(con=con)
         calc_cumm_points(con=con)
         top_n_transfers(con=con)

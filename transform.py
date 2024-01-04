@@ -64,91 +64,6 @@ def load_team_points(con):
                 )
 
 
-def concat_team_points(con):
-    joined = con.sql(
-        """
-            SELECT
-            entry as team_id,
-            event as gw,
-            points as points,
-            total_points as total_points,
-            FROM team_249496
-            UNION ALL
-            SELECT
-            entry as team_id,
-            event as gw,
-            points as points,
-            total_points as total_points,
-            FROM team_230738
-            UNION ALL
-            SELECT
-            entry as team_id,
-            event as gw,
-            points as points,
-            total_points as total_points,
-            FROM team_229056
-            UNION ALL
-            SELECT
-            entry as team_id,
-            event as gw,
-            points as points,
-            total_points as total_points,
-            FROM team_219160
-            UNION ALL
-            SELECT
-            entry as team_id,
-            event as gw,
-            points as points,
-            total_points as total_points,
-            FROM team_218961
-            UNION ALL
-            SELECT
-            entry as team_id,
-            event as gw,
-            points as points,
-            total_points as total_points,
-            FROM team_218851
-        """
-    ).df()
-
-    joined.to_csv("data/joined.csv", index=False)
-    con.sql(
-        f"CREATE TABLE IF NOT EXISTS total_points AS FROM read_csv('data/joined.csv', auto_detect = TRUE);"
-    )
-
-
-def calculate_points_bracket(con, brackets, bracket) -> pd.DataFrame:
-    sql = f"""
-    WITH 
-    gw AS (
-        SELECT 
-            *,
-        FROM total_points
-        WHERE gw >= {brackets[bracket][0]} AND gw <= {brackets[bracket][1]} 
-    ),
-    pts_table AS (
-        SELECT 
-            team_id,
-            SUM(points) as points
-        FROM gw
-        GROUP BY 1
-    )
-    SELECT
-        CONCAT('app/static/',b.short_name, '.png') AS img,
-        b.entry_name AS team_name,
-        CONCAT(b.player_first_name,' ', b.player_last_name) AS full_name,
-        a.points AS points,
-    FROM pts_table a
-    LEFT JOIN league_entry b
-    ON a.team_id = b.entry_id
-    ORDER BY 3 desc      
-
-    """
-    # CONCAT('GW',{brackets[bracket][0]},' - ', 'GW',{brackets[bracket][1]}) as gw_bracket,
-    results = con.sql(sql).df()
-    results.to_csv(f"data/results_{bracket}.csv", index=False)
-
-
 def load_gw_live(con):
     df_list = []
 
@@ -205,6 +120,91 @@ def load_transactions(con):
     con.sql("CREATE TABLE IF NOT EXISTS transactions AS SELECT * FROM transactions_df;")
 
 
+def concat_team_points(con):
+    joined = con.sql(
+        """
+            SELECT
+            entry as team_id,
+            event as gw,
+            points as points,
+            total_points as total_points,
+            FROM team_249496
+            UNION ALL
+            SELECT
+            entry as team_id,
+            event as gw,
+            points as points,
+            total_points as total_points,
+            FROM team_230738
+            UNION ALL
+            SELECT
+            entry as team_id,
+            event as gw,
+            points as points,
+            total_points as total_points,
+            FROM team_229056
+            UNION ALL
+            SELECT
+            entry as team_id,
+            event as gw,
+            points as points,
+            total_points as total_points,
+            FROM team_219160
+            UNION ALL
+            SELECT
+            entry as team_id,
+            event as gw,
+            points as points,
+            total_points as total_points,
+            FROM team_218961
+            UNION ALL
+            SELECT
+            entry as team_id,
+            event as gw,
+            points as points,
+            total_points as total_points,
+            FROM team_218851
+        """
+    ).df()
+
+    joined.to_csv("data/joined.csv", index=False)
+    con.sql(
+        f"CREATE TABLE IF NOT EXISTS total_points AS FROM read_csv('data/joined.csv', auto_detect = TRUE);"
+    )
+
+
+def calc_points_bracket(con, brackets, bracket) -> pd.DataFrame:
+    sql = f"""
+    WITH 
+    gw AS (
+        SELECT 
+            *,
+        FROM total_points
+        WHERE gw >= {brackets[bracket][0]} AND gw <= {brackets[bracket][1]} 
+    ),
+    pts_table AS (
+        SELECT 
+            team_id,
+            SUM(points) as points
+        FROM gw
+        GROUP BY 1
+    )
+    SELECT
+        CONCAT('app/static/',b.short_name, '.png') AS img,
+        b.entry_name AS team_name,
+        CONCAT(b.player_first_name,' ', b.player_last_name) AS full_name,
+        a.points AS points,
+    FROM pts_table a
+    LEFT JOIN league_entry b
+    ON a.team_id = b.entry_id
+    ORDER BY 3 desc      
+
+    """
+    # CONCAT('GW',{brackets[bracket][0]},' - ', 'GW',{brackets[bracket][1]}) as gw_bracket,
+    results = con.sql(sql).df()
+    results.to_csv(f"data/results_{bracket}.csv", index=False)
+
+
 def calc_running_standings(con):
     sql = """
     WITH 
@@ -253,7 +253,7 @@ def calc_cumm_points(con):
     )
 
 
-def calculate_blunders(con, gw):
+def calc_blunders(con, gw):
     sql = f"""
     WITH transactions_c AS (
         SELECT * 
@@ -342,4 +342,137 @@ def top_n_transfers(con):
 
     con.sql(
         f"CREATE TABLE IF NOT EXISTS bottom_n_transfers AS FROM read_csv('data/bottom_df.csv', auto_detect = TRUE);"
+    )
+
+
+def calc_bench_pts(con):
+    sql = """
+    WITH teams as (
+    SELECT
+        "element",
+        "position",
+        gw,
+        team_id
+    FROM
+        drapht.main.gw_event
+    ),
+    live as (
+    SELECT
+        live.*,
+        players.web_name,
+        players.element_type
+    FROM
+        main.gw_live live
+    LEFT JOIN static players
+    ON
+        live.id = players.id
+    ),
+    joined as (
+    SELECT 
+        teams.*, 
+        live.total_points, 
+        live.web_name,
+        CASE
+            WHEN live.element_type == '01' THEN 'GKP'
+            WHEN live.element_type == '02' THEN 'DEF'
+            WHEN live.element_type == '03' THEN 'MID'
+            WHEN live.element_type == '04' THEN 'FWD'
+            ELSE '00'
+        END AS player_type
+    FROM
+            teams
+    JOIN live 
+    ON
+            teams.element = live.id
+        AND teams.gw = live.gw
+    ),
+    subs as (
+    SELECT
+        *
+    FROM
+        joined
+    WHERE
+        position >= 12
+    ),
+    starting as (
+    SELECT
+        *
+    FROM
+        joined
+    WHERE 
+        position < 12
+    ),
+    best_starting as (
+    SELECT
+        gw,
+        team_id,
+        player_type,
+        MIN(total_points) as min_points_start
+    FROM
+        starting
+    GROUP BY
+        1,
+        2,
+        3
+    ),
+    best_subs as (
+    SELECT
+        gw,
+        team_id,
+        player_type,
+        MAX(total_points) as max_points_subs
+    FROM
+        subs
+    GROUP BY
+        1,
+        2,
+        3
+    ),
+    final as (
+    SELECT
+        start.*,
+        subs.max_points_subs,
+        min_points_start - max_points_subs as diff
+    FROM
+        best_starting start
+    JOIN 
+        best_subs subs
+    ON start.gw = subs.gw
+    AND start.team_id = subs.team_id
+    AND start.player_type = subs.player_type
+    ORDER BY
+        subs.gw,
+        subs.team_id
+    ),
+    grouped as (
+        SELECT team_id, player_type, sum(diff) as pts_lost
+        FROM final
+        WHERE diff < 0
+        GROUP BY 1,2
+    )
+    SELECT 
+        g.*,
+        b.player_first_name as name
+    FROM grouped g
+    LEFT JOIN league_entry b
+    ON g.team_id = b.entry_id
+    ORDER BY pts_lost;
+    """
+
+    bench_pts = con.sql(sql).df()
+    bench_pts.to_csv("data/bench_pts.csv", index=False)
+    con.sql(
+        f"CREATE TABLE IF NOT EXISTS bench_pts AS FROM read_csv('data/bench_pts.csv', auto_detect = TRUE);"
+    )
+
+    grp_sql = """
+    SELECT name, SUM(pts_lost) as bench_pts
+    FROM bench_pts
+    GROUP BY name
+    ORDER BY bench_pts
+    """
+    total_bench_pts = con.sql(grp_sql).df()
+    total_bench_pts.to_csv("data/total_bench_pts.csv", index=False)
+    con.sql(
+        f"CREATE TABLE IF NOT EXISTS total_bench_pts AS FROM read_csv('data/total_bench_pts.csv', auto_detect = TRUE);"
     )
