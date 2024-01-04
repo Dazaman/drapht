@@ -4,6 +4,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib
 from streamlit_extras.add_vertical_space import add_vertical_space
+from streamlit_extras.colored_header import colored_header
 
 
 st.set_page_config(
@@ -88,7 +89,12 @@ def transactions(col_names, int_cols):
 # @st.cache_data()
 def main():
     st.title("FPL Draft 23/24")
-    add_vertical_space(2)
+    colored_header(
+        label="Analysing transfers, team selection and random stuff",
+        description="I was very bored in the christmas break ..",
+        color_name="violet-70",
+    )
+    # add_vertical_space(2)
 
     gw, teams = load_current_gw_teams()
     (bracket_1, bracket_2, bracket_3, bracket_4) = load_bracket_dfs()
@@ -271,3 +277,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+## @TODO https://arnaudmiribel.github.io/streamlit-extras/extras/dataframe_explorer/
+## @TODO https://arnaudmiribel.github.io/streamlit-extras/extras/chart_annotations/
+## @TODO https://arnaudmiribel.github.io/streamlit-extras/extras/colored_header/
