@@ -3,6 +3,7 @@ import os
 import streamlit as st
 import pandas as pd
 import matplotlib
+from streamlit_extras.add_vertical_space import add_vertical_space
 
 
 st.set_page_config(
@@ -86,7 +87,8 @@ def transactions(col_names, int_cols):
 
 # @st.cache_data()
 def main():
-    st.title("FPL Draft Standings")
+    st.title("FPL Draft 23/24")
+    add_vertical_space(2)
 
     gw, teams = load_current_gw_teams()
     (bracket_1, bracket_2, bracket_3, bracket_4) = load_bracket_dfs()
@@ -141,8 +143,9 @@ def main():
         ]
     )
 
+    c1.header("Standings by GW Bracket")
     gwbracket = c1.radio(
-        "Choose GW Bracket to look at points for that bracket",
+        "Choose GW Bracket. **\$50** Bracket Winner, **\$25** for Runner-up",
         ["Bracket 1", "Bracket 2", "Bracket 3", "Bracket 4"],
         captions=["GW 1 - 10", "GW 11 - 20", "GW 21 - 29", "GW 30 - 38"],
         horizontal=True,
@@ -196,25 +199,32 @@ def main():
 
     c1.header("Points lost on Bench")
     c1.caption(
-        "Current Method of Calculation is to compare MIN pts/position of starting 11 (GK, DEF, MID, FWD) vs MAX pts/position on bench. Then Points are added up over the current elapsed GW's"
+        "* Current Method of Calculation is to compare MIN pts per position (GK, DEF, MID, FWD) of starting 11 vs MAX pts per position on bench."
     )
-    bench_pts_, total_bench_pts_ = c1.tabs(
+    c1.caption(
+        "* Only cases where the bench points were higher than starting are displayed as 'lost' points"
+    )
+    c1.caption(
+        "* It currently doesn't account for the case where for example two defs are substituted in"
+    )
+
+    total_bench_pts_, bench_pts_ = c1.tabs(
         [
-            "Points on Bench by Position",
             "Total Bench Points",
+            "Bench Points by Position",
         ]
     )
-    with bench_pts_:
-        st.dataframe(
-            bench_pts.style.background_gradient(cmap="YlOrRd_r", subset=["pts_lost"]),
-            hide_index=True,
-            use_container_width=True,
-        )
     with total_bench_pts_:
         st.dataframe(
             total_bench_pts.style.background_gradient(
                 cmap="YlOrRd_r", subset=["bench_pts"]
             ),
+            hide_index=True,
+            use_container_width=True,
+        )
+    with bench_pts_:
+        st.dataframe(
+            bench_pts.style.background_gradient(cmap="YlOrRd_r", subset=["pts_lost"]),
             hide_index=True,
             use_container_width=True,
         )
