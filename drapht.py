@@ -91,7 +91,7 @@ def main():
     st.title("FPL Draft 23/24")
     colored_header(
         label="Analysing transfers, team selection and random stuff",
-        description="I was very bored in the christmas break ..",
+        description="Hindsight is 20/20 and none of this matters, I just had some time this christmas break ..",
         color_name="violet-70",
     )
     # add_vertical_space(2)
