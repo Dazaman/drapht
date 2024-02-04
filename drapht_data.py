@@ -20,11 +20,13 @@ from transform import (
     top_n_transfers,
     calc_bench_pts,
 )
+from typing import List
 import duckdb
 import os
 import streamlit as st
 import pandas as pd
 import matplotlib
+import argparse
 
 
 def get_data(con, league_code):
@@ -62,8 +64,20 @@ def transform_load_data(
         calc_blunders(con=con, gw=i)
 
 
-def main():
-    league_code = "56578"
+def parse_arguments(cli_args: list[str] = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("--refresh", default=True, type=bool)
+    parser.add_argument("--transform", default=True, type=bool)
+    parser.add_argument("--load", default=True, type=bool)
+    parser.add_argument("--league_code", default="56578", type=str)
+
+    return parser.parse_args(args=cli_args)
+
+
+def main(cli_args: List[str]):
+    args = parse_arguments(cli_args=cli_args)
+    league_code = args.league_code
 
     brackets = {
         "1": ("1", "10"),
@@ -72,9 +86,9 @@ def main():
         "4": ("30", "38"),
     }
 
-    refresh = True
-    transform = True
-    load = True
+    refresh = args.refresh
+    transform = args.transform
+    load = args.load
 
     if not os.path.exists(f"data"):
         os.makedirs(f"data")
@@ -95,4 +109,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+
+    main(sys.argv[1:])
