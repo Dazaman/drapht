@@ -3,6 +3,8 @@ import json
 import pandas as pd
 from typing import NamedTuple
 
+print("hello")
+
 
 def transform_details(con) -> NamedTuple("League", [("entries", list), ("gw", list)]):
     """Reads in details and event status json files and creates tables in the database
