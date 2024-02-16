@@ -1,16 +1,16 @@
 team,waiver_or_free,waiver_gw,next_gw,player_in,player_in_pts,player_out,player_out_pts,net_pts
-Lulli XI,w,23,,Kulusevski,,Johnson,,
-Lulla XI,w,23,,Kilman,,Toti,,
-Lulla XI,w,23,,Broja,,João Pedro,,
-Lulli XI,f,23,,Jones,,Barkley,,
-Lulli XI,w,23,,Luis Díaz,,Douglas Luiz,,
-Lulli XI,w,23,,Olise,,Garnacho,,
-Lulla XI,w,23,,Robinson,,Tarkowski,,
-Lulla XI,w,23,,Bradley,,Colwill,,
-Lulli XI,f,23,,Barkley,,Kulusevski,,
-Dandandania,f,23,,Cash,,Emerson,,
-Walid Sb,w,23,,Bailey,,Sterling,,
-Lulla XI,w,23,,Awoniyi,,Wood,,
-Lulli XI,w,23,,Maupay,,Gakpo,,
-Lulli XI,w,23,,Burn,,White,,
-Lulla XI,w,23,,Steele,,Pickford,,
+Lulli XI,w,23,24,Burn,1,White,9,-8
+Lulli XI,w,23,24,Kulusevski,2,Johnson,7,-5
+Lulli XI,w,23,24,Olise,0,Garnacho,2,-2
+Lulli XI,w,23,24,Luis Díaz,9,Douglas Luiz,10,-1
+Lulla XI,w,23,24,Bradley,0,Colwill,1,-1
+Lulli XI,f,23,24,Barkley,2,Kulusevski,2,0
+Lulla XI,w,23,24,Kilman,1,Toti,1,0
+Lulli XI,f,23,24,Jones,2,Barkley,2,0
+Lulla XI,w,23,24,Broja,1,João Pedro,0,1
+Lulla XI,w,23,24,Robinson,2,Tarkowski,1,1
+Lulli XI,w,23,24,Maupay,2,Gakpo,1,1
+Dandandania,f,23,24,Cash,0,Emerson,-1,1
+Lulla XI,w,23,24,Steele,2,Pickford,1,1
+Lulla XI,w,23,24,Awoniyi,2,Wood,0,2
+Walid Sb,w,23,24,Bailey,5,Sterling,1,4
