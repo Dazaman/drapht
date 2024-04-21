@@ -1,10 +1,10 @@
 name,player_type,pts_lost
 Danial,MID,-50.0
-Danial,GKP,-41.0
-Danial,DEF,-37.0
+Danial,GKP,-48.0
+Danial,DEF,-38.0
 Danial,FWD,-18.0
-Faaez,GKP,-56.0
-Faaez,DEF,-39.0
+Faaez,GKP,-61.0
+Faaez,DEF,-51.0
 Faaez,MID,-9.0
 Faaez,FWD,-1.0
 Faaiz,DEF,-69.0
@@ -14,7 +14,7 @@ Faaiz,GKP,-17.0
 Feroze,DEF,-63.0
 Feroze,MID,-40.0
 Feroze,FWD,-36.0
-Feroze,GKP,-22.0
+Feroze,GKP,-30.0
 Kumail,DEF,-64.0
 Kumail,GKP,-16.0
 Kumail,FWD,-14.0
