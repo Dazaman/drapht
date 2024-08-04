@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "drapht"
-version = "0.1.0"
+version = "0.2.0"
 description = "Fantasy Draft Analysis App"
 authors = ["Danial Azam <dazam92@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.11,<3.12"
 requests = "^2.31.0"
 pandas = "^2.1.4"
 duckdb = "^0.9.2"
